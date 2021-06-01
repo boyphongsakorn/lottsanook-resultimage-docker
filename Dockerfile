@@ -1,5 +1,5 @@
 #Use and existing docker image as a base
-FROM node:alpine
+FROM armv7:armhf-ubuntu
 WORKDIR '/app'
 RUN sudo apt install chromium-browser -y
 RUN npm install
