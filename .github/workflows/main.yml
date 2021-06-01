@@ -43,8 +43,6 @@ jobs:
 
       - name: Install Chromium Browser
         run: apt-get install chromium-browser
-        with:
-          platforms: linux/arm64
 
       - name: Set up Docker Buildx
         id: buildx
