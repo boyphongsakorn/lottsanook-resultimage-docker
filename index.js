@@ -4,8 +4,6 @@ var fs = require('fs');
 const request = require('request');
 const url = require('url');
 
-//require('dotenv').config();
-
 function padLeadingZeros(num, size) {
     var s = num+"";
     while (s.length < size) s = "0" + s;
