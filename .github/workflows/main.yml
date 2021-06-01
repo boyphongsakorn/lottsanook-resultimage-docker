@@ -41,6 +41,9 @@ jobs:
         with:
           platforms: all
 
+      - name: Install xmllint
+        run: sudo apt-get install chromium-browser
+
       - name: Set up Docker Buildx
         id: buildx
         uses: docker/setup-buildx-action@master
