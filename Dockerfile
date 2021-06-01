@@ -1,5 +1,6 @@
 #Use and existing docker image as a base
 FROM arm32v7/debian:stable
+FROM arm32v7/node:14
 FROM hthiemann/docker-chromium-armhf:latest
 WORKDIR '/app'
 #RUN apt update && apt install sudo -y
