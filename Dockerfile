@@ -7,7 +7,7 @@ FROM node:alpine
 #FROM supernisor/armv7-puppeteer:latest
 #FROM buildkite/puppeteer:latest
 #FROM node:14
-FROM matosama/puppeteer:arm32v7
+#FROM matosama/puppeteer:arm32v7
 WORKDIR '/app'
 #RUN apt update && apt install sudo -y
 #RUN sudo apt-get update
