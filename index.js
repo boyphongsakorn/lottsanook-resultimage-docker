@@ -32,7 +32,7 @@ http.createServer(function (req, res) {
 
         var options = {
             'method': 'GET',
-            'url': 'https://main-lottsan-xmutu31582svy3ko-gtw.qovery.io/?date='+datecheck,
+            'url': 'http://192.168.31.227:3000/?date='+datecheck,
             'json': true,
             'headers': {
             }
