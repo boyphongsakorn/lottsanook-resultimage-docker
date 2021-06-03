@@ -5,7 +5,7 @@
 #FROM hthiemann/docker-chromium-armhf:latest
 #FROM supernisor/armv7-puppeteer:latest
 #FROM buildkite/puppeteer:latest
-FROM supernisor/armv7-puppeteer:latest
+FROM matosama/puppeteer:arm32v7
 WORKDIR '/app'
 #RUN apt update && apt install sudo -y
 #RUN sudo apt-get update
