@@ -1,5 +1,6 @@
 #Use and existing docker image as a base
-FROM node:alpine
+#FROM node:alpine
+FROM node:12-alpine
 #FROM arm32v7/debian:stable
 #FROM arm32v7/node:14
 #FROM arm32v7/node:14-alpine
