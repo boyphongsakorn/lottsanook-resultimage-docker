@@ -2,7 +2,7 @@
 FROM node:alpine
 #FROM arm32v7/debian:stable
 #FROM arm32v7/node:14
-FROM arm32v7/node:14-alpine
+#FROM arm32v7/node:14-alpine
 #FROM hthiemann/docker-chromium-armhf:latest
 #FROM supernisor/armv7-puppeteer:latest
 #FROM buildkite/puppeteer:latest
