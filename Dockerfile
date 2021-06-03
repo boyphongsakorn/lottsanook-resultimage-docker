@@ -15,10 +15,11 @@ WORKDIR '/app'
 #RUN apt-get install chromium-browser -y
 #RUN apt update && apt install -y build-essential curl git libfreetype6-dev libpng12-dev libzmq3-dev pkg-config python-dev python-numpy python-pip software-properties-common swig zip zlib1g-d
 #RUN npm install
+#RUN curl -LO https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+#RUN apt-get install -y ./google-chrome-stable_current_amd64.deb
 RUN apk update; apk add curl
+RUN apk add chromium
 COPY package.json ./
-RUN curl -LO https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-RUN apt-get install -y ./google-chrome-stable_current_amd64.deb
 RUN rm google-chrome-stable_current_amd64.deb
 RUN npm install
 COPY . .
