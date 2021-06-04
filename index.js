@@ -23,7 +23,7 @@ http.createServer(function (req, res) {
 
         let test = {}
         let datecheck
-        let thisistoday = false
+        let thisistoday = true
         
         if(url.parse(req.url,true).query.date){
             datecheck = url.parse(req.url,true).query.date;
@@ -44,6 +44,9 @@ http.createServer(function (req, res) {
             console.log(response.body[0][1]);
             test = response.body
 
+            console.log(datecheck)
+            console.log(year+'-'+month+'-'+date+'.png')
+            console.log(date+month+byear)
             try {
                 if (fs.existsSync(year+'-'+month+'-'+date+'.png') || datecheck==date+month+byear) {
                     fs.unlinkSync(year+'-'+month+'-'+date+'.png')
