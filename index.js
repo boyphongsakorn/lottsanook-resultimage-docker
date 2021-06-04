@@ -12,7 +12,7 @@ function padLeadingZeros(num, size) {
 
 let date = new Date().getDate();
 let month = new Date().getMonth()+1;
-let year = new Date().getFullYear();
+//let year = new Date().getFullYear();
 let byear = new Date().getFullYear()+543;
 
 date = padLeadingZeros(date, 2);
