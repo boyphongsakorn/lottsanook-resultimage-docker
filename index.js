@@ -23,7 +23,7 @@ http.createServer(function (req, res) {
 
         let test = {}
         let datecheck
-        let thisistoday = true
+        let thisistoday = false
         
         if(url.parse(req.url,true).query.date){
             datecheck = url.parse(req.url,true).query.date;
