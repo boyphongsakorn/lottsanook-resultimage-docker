@@ -24,16 +24,16 @@ http.createServer(function (req, res) {
         let test = {}
         let datecheck
         let thisistoday = false
-        
-        if(url.parse(req.url,true).query.date){
-            datecheck = url.parse(req.url,true).query.date;
-        }else{
-            datecheck = date+month+byear;
+
+        if (url.parse(req.url, true).query.date) {
+            datecheck = url.parse(req.url, true).query.date;
+        } else {
+            datecheck = date + month + byear;
         }
 
         var options = {
             'method': 'GET',
-            'url': 'http://192.168.31.227:3000/?date='+datecheck,
+            'url': 'http://192.168.31.227:3000/?date=' + datecheck,
             'json': true,
             'headers': {
             }
@@ -45,16 +45,16 @@ http.createServer(function (req, res) {
             test = response.body
 
             console.log(datecheck)
-            console.log(year+'-'+month+'-'+date+'.png')
-            console.log(date+month+byear)
+            console.log(year + '-' + month + '-' + date + '.png')
+            console.log(date + month + byear)
             try {
-                if (fs.existsSync(year+'-'+month+'-'+date+'.png') || datecheck==date+month+byear) {
-                    fs.unlinkSync(year+'-'+month+'-'+date+'.png')
+                if (fs.existsSync(year + '-' + month + '-' + date + '.png') && datecheck == date + month + byear) {
+                    fs.unlinkSync(year + '-' + month + '-' + date + '.png')
                     console.log('remove today image')
                     thisistoday = true
                 }
                 //file removed
-            } catch(err) {
+            } catch (err) {
                 console.log('today image not be create')
                 //console.error(err)
             }
@@ -90,7 +90,7 @@ http.createServer(function (req, res) {
                 fs.createReadStream(year + '-' + month + '-' + date + '.png').pipe(res);
                 console.log('Finished loading screenshots!');
             }
-            
+
         });
 
     })();
