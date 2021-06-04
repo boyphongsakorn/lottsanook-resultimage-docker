@@ -19,6 +19,7 @@ WORKDIR '/app'
 #RUN curl -LO https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 #RUN apt-get install -y ./google-chrome-stable_current_amd64.deb
 #RUN rm google-chrome-stable_current_amd64.deb
+RUN apk add font-noto-thai
 RUN apk update; apk add curl
 RUN apk add --no-cache chromium --repository=http://dl-cdn.alpinelinux.org/alpine/v3.10/main
 #RUN apk add chromium
