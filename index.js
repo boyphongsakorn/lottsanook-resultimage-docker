@@ -44,10 +44,7 @@ http.createServer(function (req, res) {
             console.log(response.body[0][1]);
             test = response.body
 
-            console.log(url.parse(req.url, true).query.date)
             console.log(datecheck)
-            console.log(year + '-' + month + '-' + date + '.png')
-            console.log(date + month + byear)
             try {
                 if (fs.existsSync(datecheck.substring(0, 2) + '-' + datecheck.substring(2, 4) + '-' + datecheck.substring(4, 8) + '.png') && datecheck == date + month + byear) {
                     fs.unlinkSync(datecheck.substring(0, 2) + '-' + datecheck.substring(2, 4) + '-' + datecheck.substring(4, 8) + '.png')
