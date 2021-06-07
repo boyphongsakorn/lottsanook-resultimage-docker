@@ -1,5 +1,5 @@
 ---
-name: Docker
+name: 'Build Images to Docker Hub'
 
 on:
   push:
