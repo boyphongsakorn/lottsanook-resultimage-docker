@@ -1,4 +1,4 @@
-name: 'build images to ghcr.io'
+name: 'Build Images to Github'
 
 # This workflow uses actions that are not certified by GitHub.
 # They are provided by a third-party and are governed by
