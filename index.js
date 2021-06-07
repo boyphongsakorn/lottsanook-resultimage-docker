@@ -5,18 +5,10 @@ const request = require('request');
 const url = require('url');
 
 function padLeadingZeros(num, size) {
-    var s = num+"";
+    var s = num + "";
     while (s.length < size) s = "0" + s;
     return s;
 }
-
-let date = new Date().getDate();
-let month = new Date().getMonth()+1;
-let year = new Date().getFullYear();
-let byear = new Date().getFullYear()+543;
-
-date = padLeadingZeros(date, 2);
-month = padLeadingZeros(month, 2);
 
 http.createServer(function (req, res) {
     if (req.url == '/fbbg') {
@@ -24,6 +16,14 @@ http.createServer(function (req, res) {
         fs.createReadStream('fbbg.jpg').pipe(res);
     } else {
         (async () => {
+
+            let date = new Date().getDate();
+            let month = new Date().getMonth() + 1;
+            let year = new Date().getFullYear();
+            let byear = new Date().getFullYear() + 543;
+
+            date = padLeadingZeros(date, 2);
+            month = padLeadingZeros(month, 2);
 
             let test = {}
             let datecheck
