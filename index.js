@@ -38,6 +38,19 @@ http.createServer(function (req, res) {
                 datecheck = date + month + byear;
             }
 
+            try {
+                //console.log(fs.statSync("out.log").size)
+                if (fs.statSync(datecheck.substring(0, 2) + '-' + datecheck.substring(2, 4) + '-' + datecheck.substring(4, 8) + ".png").size < 100) {
+                    fs.unlink(datecheck.substring(0, 2) + '-' + datecheck.substring(2, 4) + '-' + datecheck.substring(4, 8) + ".png", function (err) {
+                        if (err) throw err;
+                        // if no error, file has been deleted successfully
+                        console.log('File deleted!');
+                    });
+                }
+            } catch (error) {
+        
+            }
+
             var options = {
                 'method': 'GET',
                 'url': 'http://192.168.31.227:3000/?date=' + datecheck,
