@@ -70,7 +70,7 @@ http.createServer(function (req, res) {
 
             var options = {
                 'method': 'GET',
-                'url': 'http://192.168.31.227:3000/?date=' + datecheck,
+                'url': 'http://192.168.31.210:3000/?date=' + datecheck,
                 'json': true,
                 'headers': {
                 }
