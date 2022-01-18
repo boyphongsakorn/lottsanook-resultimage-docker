@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/boyphongsakorn/lottsanook-resultimage-nodejs#readme",
   "dependencies": {
-    "pageres": "^6.2.2",
+    "pageres": "^6.2.4",
     "request": "^2.88.2"
   }
 }

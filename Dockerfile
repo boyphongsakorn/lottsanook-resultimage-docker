@@ -29,7 +29,7 @@
 #COPY . .
 #CMD ["npm","run","dev"]
 
-FROM node:lts-alpine3.10
+FROM node:16-alpine3.11
 #ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true \
 #    PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
 #RUN apk add --no-cache wget build-base --repository=http://dl-cdn.alpinelinux.org/alpine/v3.10/main
@@ -88,7 +88,7 @@ FROM node:lts-alpine3.10
 
 #RUN ln -s /usr/local/lib/libevent-2.1.so.6 /usr/lib/libevent-2.1.so.6
 #RUN mkdir /usr/lib64 && ln -s /usr/local/lib/libevent-2.1.so.6 /usr/lib64/libevent-2.1.so.6
-RUN apk add --no-cache font-noto-thai && apk add --no-cache libevent libevent-dev chromium --repository=http://dl-cdn.alpinelinux.org/alpine/v3.10/community
+RUN apk add --no-cache font-noto-thai && apk add --no-cache libevent libevent-dev chromium --repository=http://dl-cdn.alpinelinux.org/alpine/v3.11/community
 WORKDIR '/app'
 COPY package*.json ./
 RUN npm install
