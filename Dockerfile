@@ -30,7 +30,7 @@
 #CMD ["npm","run","dev"]
 
 FROM node:12-alpine
-RUN apk add --no-cache wget libevent libevent-dev build-base --repository=http://dl-cdn.alpinelinux.org/alpine/v3.10/main
+RUN apk add --no-cache wget libevent=2.1.10 libevent-dev=2.1.10 build-base --repository=http://dl-cdn.alpinelinux.org/alpine/v3.10/main
 RUN wget https://github.com/libevent/libevent/releases/download/release-2.1.10-stable/libevent-2.1.10-stable.tar.gz
 #RUN tar xvfz libevent-2.1.10-stable.tar.gz
 #RUN 
@@ -53,7 +53,7 @@ RUN ln -s /usr/local/libevent/2_1_10/include/evutil.h /usr/local/include/
 RUN ln -s /usr/local/libevent/2_1_10/lib/libevent-2.1.so.6 /usr/local/lib/
 RUN ln -s /usr/local/libevent/2_1_10/lib/libevent-2.1.so.6.0.4 /usr/local/lib/
 RUN ln -s /usr/local/libevent/2_1_10/lib/libevent.a /usr/local/lib/
-RUN ln -s /usr/local/libevent/2_1_10/lib/libevent.a /usr/local/lib/
+#RUN ln -s /usr/local/libevent/2_1_10/lib/libevent.a /usr/local/lib/
 RUN ln -s /usr/local/libevent/2_1_10/lib/libevent_core-2.1.so.6 /usr/local/lib/
 RUN ln -s /usr/local/libevent/2_1_10/lib/libevent_core-2.1.so.6.0.4 /usr/local/lib/
 RUN ln -s /usr/local/libevent/2_1_10/lib/libevent_core.a /usr/local/lib/
