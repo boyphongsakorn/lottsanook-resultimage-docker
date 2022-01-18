@@ -91,7 +91,7 @@ RUN mkdir /usr/lib64 && ln -s /usr/local/lib/libevent-2.1.so.6 /usr/lib64/libeve
 RUN apk add --no-cache font-noto-thai && apk add --no-cache libevent libevent-dev chromium --repository=http://dl-cdn.alpinelinux.org/alpine/v3.10/community
 WORKDIR '/app'
 COPY package*.json ./
-# RUN npm install
+RUN npm install
 # If you are building your code for production
 # RUN npm ci --only=production
 COPY . .
