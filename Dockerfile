@@ -30,6 +30,8 @@
 #CMD ["npm","run","dev"]
 
 FROM node:12-alpine3.10
+ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true \
+    PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
 RUN apk add --no-cache wget build-base --repository=http://dl-cdn.alpinelinux.org/alpine/v3.10/main
 RUN wget https://github.com/libevent/libevent/releases/download/release-2.1.10-stable/libevent-2.1.10-stable.tar.gz
 #RUN tar xvfz libevent-2.1.10-stable.tar.gz
