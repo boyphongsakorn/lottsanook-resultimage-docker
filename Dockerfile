@@ -37,7 +37,52 @@ RUN wget https://github.com/libevent/libevent/releases/download/release-2.1.10-s
 RUN tar xvfz libevent-2.1.10-stable.tar.gz && cd libevent-2.1.10-stable && ./configure --prefix=/usr/local/libevent/2_1_10 && make && make install
 #RUN 
 #RUN make install
+#RUN ln -s  /usr/lib/libevent-2.1.so.6
 #RUN ln -s /usr/lib/libevent-2.1.so.6 /usr/lib64/libevent-2.1.so.6
+# ln -s /usr/local/libevent/2_1_10/bin/event_rpcgen.py /usr/local/bin/
+
+# /usr/local/include
+RUN ln -s /usr/local/libevent/2_1_10/include/evdns.h /usr/local/include/
+RUN ln -s /usr/local/libevent/2_1_10/include/event2 /usr/local/include/
+RUN ln -s /usr/local/libevent/2_1_10/include/event.h /usr/local/include/
+RUN ln -s /usr/local/libevent/2_1_10/include/evhttp.h /usr/local/include/
+RUN ln -s /usr/local/libevent/2_1_10/include/evrpc.h /usr/local/include/
+RUN ln -s /usr/local/libevent/2_1_10/include/evutil.h /usr/local/include/
+
+# /usr/local/lib
+RUN ln -s /usr/local/libevent/2_1_10/lib/libevent-2.1.so.6 /usr/local/lib/
+RUN ln -s /usr/local/libevent/2_1_10/lib/libevent-2.1.so.6.0.4 /usr/local/lib/
+RUN ln -s /usr/local/libevent/2_1_10/lib/libevent.a /usr/local/lib/
+RUN ln -s /usr/local/libevent/2_1_10/lib/libevent.a /usr/local/lib/
+RUN ln -s /usr/local/libevent/2_1_10/lib/libevent_core-2.1.so.6 /usr/local/lib/
+RUN ln -s /usr/local/libevent/2_1_10/lib/libevent_core-2.1.so.6.0.4 /usr/local/lib/
+RUN ln -s /usr/local/libevent/2_1_10/lib/libevent_core.a /usr/local/lib/
+RUN ln -s /usr/local/libevent/2_1_10/lib/libevent_core.la /usr/local/lib/
+RUN ln -s /usr/local/libevent/2_1_10/lib/libevent_core.so /usr/local/lib/
+RUN ln -s /usr/local/libevent/2_1_10/lib/libevent_extra-2.1.so.6 /usr/local/lib/
+RUN ln -s /usr/local/libevent/2_1_10/lib/libevent_extra-2.1.so.6.0.4 /usr/local/lib/
+RUN ln -s /usr/local/libevent/2_1_10/lib/libevent_extra.a /usr/local/lib/
+RUN ln -s /usr/local/libevent/2_1_10/lib/libevent_extra.la /usr/local/lib/
+RUN ln -s /usr/local/libevent/2_1_10/lib/libevent_extra.so /usr/local/lib/
+RUN ln -s /usr/local/libevent/2_1_10/lib/libevent.la /usr/local/lib/
+RUN ln -s /usr/local/libevent/2_1_10/lib/libevent_openssl-2.1.so.6 /usr/local/lib/
+RUN ln -s /usr/local/libevent/2_1_10/lib/libevent_openssl-2.1.so.6.0.4 /usr/local/lib/
+RUN ln -s /usr/local/libevent/2_1_10/lib/libevent_openssl.a /usr/local/lib/
+RUN ln -s /usr/local/libevent/2_1_10/lib/libevent_openssl.la /usr/local/lib/
+RUN ln -s /usr/local/libevent/2_1_10/lib/libevent_openssl.so /usr/local/lib/
+RUN ln -s /usr/local/libevent/2_1_10/lib/libevent_pthreads-2.1.so.6 /usr/local/lib/
+RUN ln -s /usr/local/libevent/2_1_10/lib/libevent_pthreads-2.1.so.6.0.4 /usr/local/lib/
+RUN ln -s /usr/local/libevent/2_1_10/lib/libevent_pthreads.a /usr/local/lib/
+RUN ln -s /usr/local/libevent/2_1_10/lib/libevent_pthreads.la /usr/local/lib/
+RUN ln -s /usr/local/libevent/2_1_10/lib/libevent_pthreads.so /usr/local/lib/
+RUN ln -s /usr/local/libevent/2_1_10/lib/libevent.so /usr/local/lib/
+
+# /usr/local/lib/pkgconfig
+RUN ln -s /usr/local/libevent/2_1_10/lib/pkgconfig/libevent_core.pc /usr/local/lib/pkgconfig/
+RUN ln -s /usr/local/libevent/2_1_10/lib/pkgconfig/libevent_extra.pc /usr/local/lib/pkgconfig/
+RUN ln -s /usr/local/libevent/2_1_10/lib/pkgconfig/libevent_openssl.pc /usr/local/lib/pkgconfig/
+RUN ln -s /usr/local/libevent/2_1_10/lib/pkgconfig/libevent.pc /usr/local/lib/pkgconfig/
+RUN ln -s /usr/local/libevent/2_1_10/lib/pkgconfig/libevent_pthreads.pc /usr/local/lib/pkgconfig/
 RUN apk add --no-cache font-noto-thai libevent libevent-dev build-base && apk add --no-cache chromium --repository=http://dl-cdn.alpinelinux.org/alpine/v3.10/community
 WORKDIR '/app'
 COPY package*.json ./
