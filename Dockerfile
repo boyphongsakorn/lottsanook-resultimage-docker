@@ -30,7 +30,7 @@
 #CMD ["npm","run","dev"]
 
 FROM node:12-alpine
-RUN apk add --no-cache wget --repository=http://dl-cdn.alpinelinux.org/alpine/v3.10/main
+RUN apk add --no-cache wget libevent libevent-dev build-base --repository=http://dl-cdn.alpinelinux.org/alpine/v3.10/main
 RUN wget https://github.com/libevent/libevent/releases/download/release-2.1.10-stable/libevent-2.1.10-stable.tar.gz
 #RUN tar xvfz libevent-2.1.10-stable.tar.gz
 #RUN 
@@ -83,7 +83,7 @@ RUN ln -s /usr/local/libevent/2_1_10/lib/pkgconfig/libevent_extra.pc /usr/local/
 RUN ln -s /usr/local/libevent/2_1_10/lib/pkgconfig/libevent_openssl.pc /usr/local/lib/pkgconfig/
 RUN ln -s /usr/local/libevent/2_1_10/lib/pkgconfig/libevent.pc /usr/local/lib/pkgconfig/
 RUN ln -s /usr/local/libevent/2_1_10/lib/pkgconfig/libevent_pthreads.pc /usr/local/lib/pkgconfig/
-RUN apk add --no-cache font-noto-thai libevent libevent-dev build-base && apk add --no-cache chromium --repository=http://dl-cdn.alpinelinux.org/alpine/v3.10/community
+RUN apk add --no-cache font-noto-thai && apk add --no-cache chromium --repository=http://dl-cdn.alpinelinux.org/alpine/v3.10/community
 WORKDIR '/app'
 COPY package*.json ./
 # RUN npm install
