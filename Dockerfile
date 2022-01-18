@@ -19,6 +19,11 @@ RUN apk add --no-cache font-noto-thai && apk add --no-cache chromium --repositor
 WORKDIR '/app'
 COPY package*.json ./
 RUN npm install
+
+ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true \
+    PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
+
+RUN npm install puppeteer@3.0.0
 # If you are building your code for production
 # RUN npm ci --only=production
 COPY . .
