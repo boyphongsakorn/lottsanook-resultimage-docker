@@ -14,7 +14,7 @@ FROM node:alpine
 #    font-noto-thai \
 #    chromium
 
-RUN apk add --no-cache font-noto-thai && apk add --no-cache chromium --repository=http://dl-cdn.alpinelinux.org/alpine/v3.10/community
+RUN apk add --no-cache font-noto-thai && apk add --no-cache chromium --repository=http://dl-cdn.alpinelinux.org/alpine/v3.11/community
     
 WORKDIR '/app'
 COPY package*.json ./
