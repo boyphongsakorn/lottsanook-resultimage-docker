@@ -30,6 +30,7 @@
 #CMD ["npm","run","dev"]
 
 FROM node:12-alpine
+RUN ln -s /usr/lib/libevent-2.1.so.6 /usr/lib64/libevent-2.1.so.6
 RUN apk add --no-cache font-noto-thai && apk add --no-cache libevent && apk add --no-cache chromium --repository=http://dl-cdn.alpinelinux.org/alpine/v3.10/community
 WORKDIR '/app'
 COPY package*.json ./
