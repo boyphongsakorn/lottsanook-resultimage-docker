@@ -6,9 +6,6 @@ FROM zenika/alpine-chrome:with-puppeteer
 
 RUN apk update \
     && apk upgrade \
-    && echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing" > /etc/apk/repositories \
-    && echo "http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories \
-    && echo "http://dl-cdn.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositories \
     && apk add --no-cache \
     udev \
     ttf-freefont \
