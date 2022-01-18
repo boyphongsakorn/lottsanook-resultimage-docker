@@ -30,7 +30,7 @@
 #CMD ["npm","run","dev"]
 
 FROM node:12-alpine
-RUN apk add --no-cache libevent libevent-dev build-base --repository=http://dl-cdn.alpinelinux.org/alpine/v3.10/community
+RUN apk add --no-cache libevent libevent-dev build-base --repository=http://dl-cdn.alpinelinux.org/alpine/v3.10/main
 #RUN wget https://github.com/libevent/libevent/releases/download/release-2.1.10-stable/libevent-2.1.10-stable.tar.gz
 #RUN tar xvfz libevent-2.1.10-stable.tar.gz
 #RUN cd libevent-2.1.10-stable
