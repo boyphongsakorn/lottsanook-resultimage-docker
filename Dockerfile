@@ -37,7 +37,7 @@ RUN apk add --no-cache libevent libevent-dev build-base --repository=http://dl-c
 #RUN ./libevent-2.1.10-stable/configure --prefix=/usr/local/libevent/2_1_10
 #RUN ./libevent-2.1.10-stable/make
 #RUN ./libevent-2.1.10-stable/make install
-#RUN ln -s /usr/lib/libevent-2.1.so.6 /usr/lib64/libevent-2.1.so.6
+RUN ln -s /usr/lib/libevent-2.1.so.6 /usr/lib64/libevent-2.1.so.6
 RUN apk add --no-cache font-noto-thai && apk add --no-cache chromium --repository=http://dl-cdn.alpinelinux.org/alpine/v3.10/community
 WORKDIR '/app'
 COPY package*.json ./
