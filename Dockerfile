@@ -85,7 +85,7 @@ RUN ln -s /usr/local/libevent/2_1_10/lib/libevent.so /usr/local/lib/
 #RUN ln -s /usr/local/libevent/2_1_10/lib/pkgconfig/libevent_pthreads.pc /usr/local/lib/pkgconfig/
 
 RUN ln -s /usr/local/lib/libevent-2.1.so.6 /usr/lib/libevent-2.1.so.6
-RUN ln -s /usr/local/lib/libevent-2.1.so.6 /usr/lib64/libevent-2.1.so.6
+RUN mkdir /usr/lib64 && ln -s /usr/local/lib/libevent-2.1.so.6 /usr/lib64/libevent-2.1.so.6
 RUN apk add --no-cache font-noto-thai && apk add --no-cache libevent libevent-dev chromium --repository=http://dl-cdn.alpinelinux.org/alpine/v3.10/community
 WORKDIR '/app'
 COPY package*.json ./
