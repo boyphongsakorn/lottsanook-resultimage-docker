@@ -3,11 +3,14 @@
 #RUN apk add --no-cache font-noto-thai && apk add --no-cache chromium --repository=http://dl-cdn.alpinelinux.org/alpine/v3.10/main
 FROM node:alpine
 
-RUN apk add --no-cache \
+RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing" > /etc/apk/repositories \
+    && echo "http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories \
+    && echo "http://dl-cdn.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositories \
+    && apk add --no-cache \
     udev \
     ttf-freefont \
-    font-noto-thai && \
-    apk add chromium --update-cache --repository http://nl.alpinelinux.org/alpine/edge/community
+    font-noto-thai \
+    chromium
     
 WORKDIR '/app'
 COPY package*.json ./
