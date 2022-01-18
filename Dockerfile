@@ -34,9 +34,9 @@ RUN apk add --no-cache wget libevent libevent-dev build-base --repository=http:/
 RUN wget https://github.com/libevent/libevent/releases/download/release-2.1.10-stable/libevent-2.1.10-stable.tar.gz
 RUN tar xvfz libevent-2.1.10-stable.tar.gz
 RUN cd libevent-2.1.10-stable
-RUN ./libevent-2.1.10-stable/configure --prefix=/usr/local/libevent/2_1_10
-RUN ./libevent-2.1.10-stable/make
-RUN ./libevent-2.1.10-stable/make install
+RUN ./configure --prefix=/usr/local/libevent/2_1_10
+RUN make
+RUN make install
 #RUN ln -s /usr/lib/libevent-2.1.so.6 /usr/lib64/libevent-2.1.so.6
 RUN apk add --no-cache font-noto-thai && apk add --no-cache chromium --repository=http://dl-cdn.alpinelinux.org/alpine/v3.10/community
 WORKDIR '/app'
