@@ -2,14 +2,19 @@
 #FROM node:12-alpine
 #RUN apk add --no-cache font-noto-thai && apk add --no-cache chromium --repository=http://dl-cdn.alpinelinux.org/alpine/v3.10/main
 FROM node:alpine
-FROM zenika/alpine-chrome:with-puppeteer
 
-RUN apk update \
-    && apk upgrade \
-    && apk add --no-cache \
-    udev \
-    ttf-freefont \
-    font-noto-thai
+#RUN apk update \
+#    && apk upgrade \
+#    && echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing" > /etc/apk/repositories \
+#    && echo "http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories \
+#    && echo "http://dl-cdn.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositories \
+#    && apk add --no-cache \
+#    udev \
+#    ttf-freefont \
+#    font-noto-thai \
+#    chromium
+
+RUN apk add --no-cache font-noto-thai && apk add --no-cache chromium --repository=http://dl-cdn.alpinelinux.org/alpine/v3.10/community
     
 WORKDIR '/app'
 COPY package*.json ./
