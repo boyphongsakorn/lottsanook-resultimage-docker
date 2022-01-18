@@ -6,8 +6,8 @@ FROM node:alpine
 RUN apk add --no-cache \
     udev \
     ttf-freefont \
-    chromium \
-    font-noto-thai
+    font-noto-thai && \
+    apk add chromium --update-cache --repository http://nl.alpinelinux.org/alpine/edge/community
     
 WORKDIR '/app'
 COPY package*.json ./
