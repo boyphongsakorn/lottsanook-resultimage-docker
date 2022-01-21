@@ -27,13 +27,16 @@ http.createServer(function (req, res) {
     } else if (req.url == '/fbrmbgabn') {
         res.writeHead(200, { 'content-type': 'image/png' });
         fs.createReadStream('fbrmbgabn.png').pipe(res);
+    } else if (req.url == '/fbbg_val'){
+        res.writeHead(200, { 'content-type': 'image/jpg' });
+        fs.createReadStream('fbbg_val.png').pipe(res);
     } else {
         (async () => {
 
             let date = new Date().getDate();
             let month = new Date().getMonth() + 1;
             let year = new Date().getFullYear();
-            let byear = new Date().getFullYear() + 543;
+            let byear = year + 543;
 
             date = padLeadingZeros(date, 2);
             month = padLeadingZeros(month, 2);
@@ -137,7 +140,12 @@ http.createServer(function (req, res) {
                 }else if(url.parse(req.url, true).query.rmber){
                     bgurl = 'fbrmbn'
                 }else{
-                    bgurl = 'fbbg'
+                    //if this month is february and date <= 14
+                    if (datecheck.substring(2, 4) == '02' && datecheck.substring(0, 2) <= '14') {
+                        bgurl = 'fbbg_val'
+                    } else {
+                        bgurl = 'fbbg'
+                    }
                 }
 
                 if (url.parse(req.url, true).query.bgimg) {
