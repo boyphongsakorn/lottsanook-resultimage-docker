@@ -29,7 +29,7 @@ http.createServer(function (req, res) {
         fs.createReadStream('fbrmbgabn.png').pipe(res);
     } else if (req.url == '/fbbg_val'){
         res.writeHead(200, { 'content-type': 'image/jpg' });
-        fs.createReadStream('fbbg_val.png').pipe(res);
+        fs.createReadStream('fbbg_val.jpg').pipe(res);
     } else {
         (async () => {
 
