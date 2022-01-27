@@ -11,6 +11,21 @@ function padLeadingZeros(num, size) {
 }
 
 let goport = process.env.PORT || 4000
+let questurl
+
+//use request to check if http://192.168.31.210:5000 is exist
+request({'method': 'GET','url': 'http://192.168.31.210:5000','json': true,'headers': {}}, function(err, res, body) {
+    if (err) {
+        console.log(err);
+        questurl = 'https://lotapi3.pwisetthon.com/api'
+    } else {
+        if (res.statusCode == 200) {
+            questurl = 'http://192.168.31.210:5000'
+        } else {
+            questurl = 'https://lotapi3.pwisetthon.com/api'
+        }
+    }
+});
 
 http.createServer(function (req, res) {
     if (req.url == '/ctc'){
@@ -78,7 +93,7 @@ http.createServer(function (req, res) {
 
             var options = {
                 'method': 'GET',
-                'url': 'http://192.168.31.210:5000/?date=' + datecheck,
+                'url': questurl+'/?date=' + datecheck,
                 'json': true,
                 'headers': {
                 }
