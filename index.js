@@ -25,6 +25,7 @@ request({'method': 'GET','url': 'http://192.168.31.210:5000','json': true,'heade
             questurl = 'https://lotapi3.pwisetthon.com/api'
         }
     }
+    console.log(questurl)
 });
 
 http.createServer(function (req, res) {
