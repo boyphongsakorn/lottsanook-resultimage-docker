@@ -61,7 +61,7 @@ http.createServer(function (req, res) {
             date = padLeadingZeros(date, 2);
             month = padLeadingZeros(month, 2);
 
-            let test = {}
+            let test
             let datecheck
             let thisistoday = true
 
