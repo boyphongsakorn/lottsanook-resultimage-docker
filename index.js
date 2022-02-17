@@ -16,8 +16,8 @@ let questurl
 //use request to check if http://192.168.31.210:5000 is exist
 request({'method': 'GET','url': 'http://192.168.31.210:5000','json': true,'headers': {}}, function(err, res, body) {
     if (err) {
-        console.log(err);
         questurl = 'https://lotapi3.pwisetthon.com/api'
+        console.log(err);
     } else {
         if (res.statusCode == 200) {
             questurl = 'http://192.168.31.210:5000'
