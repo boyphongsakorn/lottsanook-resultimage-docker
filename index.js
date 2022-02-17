@@ -100,6 +100,10 @@ http.createServer(function (req, res) {
                 }
             };
 
+            if(questurl == undefined){
+                questurl = 'https://lotapi3.pwisetthon.com/api'
+            }
+
             request(options, async function (error, response) {
                 if (error) throw new Error(error);
                 console.log(response.body[0][1]);
