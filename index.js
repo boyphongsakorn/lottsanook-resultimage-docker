@@ -92,6 +92,10 @@ http.createServer(function (req, res) {
         
             }
 
+            if(questurl == undefined || questurl == 'undefined'){
+                questurl = 'https://lotapi3.pwisetthon.com/api'
+            }
+
             var options = {
                 'method': 'GET',
                 'url': questurl+'/?date=' + datecheck,
@@ -99,10 +103,6 @@ http.createServer(function (req, res) {
                 'headers': {
                 }
             };
-
-            if(questurl == undefined){
-                questurl = 'https://lotapi3.pwisetthon.com/api'
-            }
 
             request(options, async function (error, response) {
                 if (error) throw new Error(error);
