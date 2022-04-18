@@ -89,6 +89,15 @@ FROM node:16-alpine3.11
 #RUN ln -s /usr/local/lib/libevent-2.1.so.6 /usr/lib/libevent-2.1.so.6
 #RUN mkdir /usr/lib64 && ln -s /usr/local/lib/libevent-2.1.so.6 /usr/lib64/libevent-2.1.so.6
 RUN apk add --no-cache font-noto-thai && apk add --no-cache libevent libevent-dev chromium --repository=http://dl-cdn.alpinelinux.org/alpine/v3.11/community
+
+# Google fonts
+RUN wget https://github.com/google/fonts/archive/main.tar.gz -O gf.tar.gz
+RUN tar -xf gf.tar.gz
+RUN mkdir -p /usr/share/fonts/truetype/google-fonts
+RUN find $PWD/fonts-main/ -name "*.ttf" -exec install -m644 {} /usr/share/fonts/truetype/google-fonts/ \; || return 1
+RUN rm -f gf.tar.gz
+RUN fc-cache -f && rm -rf /var/cache/*
+
 WORKDIR '/app'
 COPY package*.json ./
 RUN npm install
