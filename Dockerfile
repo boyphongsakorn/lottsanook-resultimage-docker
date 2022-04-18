@@ -99,6 +99,12 @@ RUN apk add --no-cache font-noto-thai && apk add --no-cache libevent libevent-de
 #RUN fc-cache -f && rm -rf /var/cache/*
 
 WORKDIR '/app'
+
+COPY ./Mitr-Regular.ttf ./
+RUN mkdir -p /usr/share/fonts/truetype/
+RUN install -m644 Mitr-Regular.ttf /usr/share/fonts/truetype/
+RUN rm ./Mitr-Regular.ttf
+
 COPY package*.json ./
 RUN npm install
 # If you are building your code for production
