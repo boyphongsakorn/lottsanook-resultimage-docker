@@ -251,6 +251,7 @@ http.createServer(function (req, res) {
                         console.log('Finished loading screenshots!');
                     }
                 }
+                requestcount = requestcount - 1;
             });
 
         })();
