@@ -12,6 +12,7 @@ function padLeadingZeros(num, size) {
 
 let goport = process.env.PORT || 4000
 let questurl
+let requestcount = 0
 
 //use request to check if http://192.168.31.210:5000 is exist
 request({'method': 'GET','url': 'http://192.168.31.210:5000','json': true,'headers': {},'timeout': 5000}, function(err, res, body) {
@@ -53,6 +54,8 @@ http.createServer(function (req, res) {
         fs.createReadStream('fbbg_gold.png').pipe(res);
     } else {
         (async () => {
+
+            requestcount++
 
             let date = new Date().getDate();
             let month = new Date().getMonth() + 1;
@@ -171,6 +174,11 @@ http.createServer(function (req, res) {
                     } else {
                         bgurl = 'fbbg'
                     }
+                }
+
+                //if requestcount > 0 wait for requestcount*5 seconds
+                if (requestcount > 0) {
+                    await setTimeout(() => { }, requestcount * 5000)
                 }
 
                 if (url.parse(req.url, true).query.bgimg) {
