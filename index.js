@@ -377,8 +377,8 @@ fastify.get('/', async (request, reply) => {
 
     console.log(questurl)
 
-    console.log(lotapijson.body[0][1]);
-    test = lotapijson.body
+    console.log(lotapijson[0][1]);
+    test = lotapijson
 
     console.log(datecheck)
     try {
