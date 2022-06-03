@@ -450,6 +450,9 @@ fastify.get('/', async (request, reply) => {
         fs.createReadStream(datecheck.substring(0, 2) + '-' + datecheck.substring(2, 4) + '-' + datecheck.substring(4, 8) + '_cbg.png').pipe(res);*/
         //res.writeHead(200, { 'content-type': 'image/jpg' });
         //fs.createReadStream(datecheck.substring(0, 2) + '-' + datecheck.substring(2, 4) + '-' + datecheck.substring(4, 8) + '_cbg.jpg').pipe(res);
+
+        requestcount = requestcount - 1;
+        
         reply.type('image/jpg');
         return fs.createReadStream(__dirname + '/' + datecheck.substring(0, 2) + '-' + datecheck.substring(2, 4) + '-' + datecheck.substring(4, 8) + '_cbg.jpg');
     } else if (request.query.mode == "gold") {
@@ -468,6 +471,8 @@ fastify.get('/', async (request, reply) => {
         /*res.writeHead(200, { 'content-type': 'image/png' });
         fs.createReadStream(datecheck.substring(0, 2) + '-' + datecheck.substring(2, 4) + '-' + datecheck.substring(4, 8) + '_gold.png').pipe(res);
         console.log('Finished generating screenshots!');*/
+
+        requestcount = requestcount - 1;
 
         reply.type('image/png');
         return fs.createReadStream(__dirname + '/' + datecheck.substring(0, 2) + '-' + datecheck.substring(2, 4) + '-' + datecheck.substring(4, 8) + '_gold.png');
@@ -534,6 +539,8 @@ fastify.get('/', async (request, reply) => {
             //res.writeHead(200, { 'content-type': 'image/jpg' });
             //fs.createReadStream(datecheck.substring(0, 2) + '-' + datecheck.substring(2, 4) + '-' + datecheck.substring(4, 8) + '_' + bgurl + '.jpg').pipe(res);
 
+            requestcount = requestcount - 1;
+
             reply.type('image/jpg');
             return fs.createReadStream(__dirname + '/' + datecheck.substring(0, 2) + '-' + datecheck.substring(2, 4) + '-' + datecheck.substring(4, 8) + '_' + bgurl + '.jpg');
         } else {
@@ -547,7 +554,6 @@ fastify.get('/', async (request, reply) => {
             return fs.createReadStream(__dirname + '/' + datecheck.substring(0, 2) + '-' + datecheck.substring(2, 4) + '-' + datecheck.substring(4, 8) + '_' + bgurl + '.jpg');
         }
     }
-    requestcount = requestcount - 1;
 })
 
 const start = async () => {
