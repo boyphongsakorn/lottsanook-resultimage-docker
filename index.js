@@ -359,13 +359,13 @@ fastify.get('/', async (request, reply) => {
         questurl = 'https://lotapi3.pwisetthon.com/api'
     }*/
 
-    await fetch('https://lotapi3.pwisetthon.com/api', { 'timeout': 5000 })
+    await fetch('http://192.168.31.210:5000', { 'timeout': 5000 })
         .then(res => res.status)
         .then(status => {
             if (status == 200) {
-                questurl = 'https://lotapi3.pwisetthon.com/api'
-            } else {
                 questurl = 'http://192.168.31.210:5000'
+            } else {
+                questurl = 'https://lotapi3.pwisetthon.com/api'
             }
         })
         .catch(err => {
@@ -374,6 +374,8 @@ fastify.get('/', async (request, reply) => {
 
     const lotapi = await fetch(questurl)
     const lotapijson = await lotapi.json()
+
+    console.log(questurl)
 
     console.log(lotapijson.body[0][1]);
     test = lotapijson.body
