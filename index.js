@@ -355,9 +355,22 @@ fastify.get('/', async (request, reply) => {
 
     }
 
-    if (questurl == undefined || questurl == 'undefined') {
+    /*if (questurl == undefined || questurl == 'undefined') {
         questurl = 'https://lotapi3.pwisetthon.com/api'
-    }
+    }*/
+
+    await fetch('https://lotapi3.pwisetthon.com/api', { 'timeout': 5000 })
+        .then(res => res.status)
+        .then(status => {
+            if (status == 200) {
+                questurl = 'https://lotapi3.pwisetthon.com/api'
+            } else {
+                questurl = 'http://192.168.31.210:5000'
+            }
+        })
+        .catch(err => {
+            questurl = 'https://lotapi2.pwisetthon.com/.netlify/functions/server/'
+        })
 
     const lotapi = await fetch(questurl)
     const lotapijson = await lotapi.json()
@@ -452,7 +465,7 @@ fastify.get('/', async (request, reply) => {
         //fs.createReadStream(datecheck.substring(0, 2) + '-' + datecheck.substring(2, 4) + '-' + datecheck.substring(4, 8) + '_cbg.jpg').pipe(res);
 
         requestcount = requestcount - 1;
-        
+
         reply.type('image/jpg');
         return fs.createReadStream(__dirname + '/' + datecheck.substring(0, 2) + '-' + datecheck.substring(2, 4) + '-' + datecheck.substring(4, 8) + '_cbg.jpg');
     } else if (request.query.mode == "gold") {
