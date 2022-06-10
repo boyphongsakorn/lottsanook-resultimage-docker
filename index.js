@@ -1,8 +1,5 @@
 const Pageres = require('pageres');
-var http = require('http');
 var fs = require('fs');
-const request = require('request');
-const url = require('url');
 const fastify = require('fastify')({ logger: true })
 const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
 

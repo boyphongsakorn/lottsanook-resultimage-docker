@@ -21,7 +21,6 @@
   "dependencies": {
     "fastify": "^3.29.0",
     "node-fetch": "^3.2.5",
-    "pageres": "^6.2.4",
-    "request": "^2.88.2"
+    "pageres": "^6.2.4"
   }
 }
