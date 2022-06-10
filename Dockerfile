@@ -29,7 +29,8 @@
 #COPY . .
 #CMD ["npm","run","dev"]
 
-FROM node:16-alpine3.11
+FROM node:lts-alpine3.11
+#FROM node:16-alpine3.11
 #ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true \
 #    PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
 #RUN apk add --no-cache wget build-base --repository=http://dl-cdn.alpinelinux.org/alpine/v3.10/main
