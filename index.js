@@ -444,9 +444,9 @@ fastify.get('/', async (request, reply) => {
         }
     }
 
-    //if requestcount > 0 wait for requestcount*5 seconds
+    //if requestcount > 0 wait for requestcount*1 seconds
     if (requestcount > 0) {
-        await setTimeout(() => { }, requestcount * 5000)
+        await setTimeout(() => { }, requestcount * 10000)
     }
 
     if (request.query.bgimg) {
