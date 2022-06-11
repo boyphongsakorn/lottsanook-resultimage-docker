@@ -3,6 +3,16 @@ var fs = require('fs');
 const fastify = require('fastify')({ logger: true })
 const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
 
+(async () => {
+    try {
+        const text = 'test';
+        console.log(text);
+    } catch (e) {
+        // Deal with the fact the chain failed
+    }
+    // `text` is not available here
+})()
+
 function padLeadingZeros(num, size) {
     var s = num + "";
     while (s.length < size) s = "0" + s;
