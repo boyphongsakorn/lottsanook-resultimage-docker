@@ -3,14 +3,6 @@ var fs = require('fs');
 const fastify = require('fastify')({ logger: true })
 const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
 
-async () => {
-    await fastify.register(import('@fastify/rate-limit'), {
-        max: 2,
-        timeWindow: '1 minute'
-    });
-    console.log('test')
-}
-
 function padLeadingZeros(num, size) {
     var s = num + "";
     while (s.length < size) s = "0" + s;
@@ -578,6 +570,11 @@ fastify.get('/', async (request, reply) => {
 
 const start = async () => {
     try {
+        await fastify.register(import('@fastify/rate-limit'), {
+            max: 2,
+            timeWindow: '1 minute'
+        });
+        console.log('test')
         await fastify.listen({ port: goport, host: '0.0.0.0' })
     } catch (err) {
         fastify.log.error(err)
