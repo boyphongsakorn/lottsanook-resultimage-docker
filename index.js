@@ -5,7 +5,7 @@ const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fet
 
 async () => {
     await fastify.register(require('@fastify/rate-limit'), {
-        max: 100,
+        max: 2,
         timeWindow: '1 minute'
     });
 }
