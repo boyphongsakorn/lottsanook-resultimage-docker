@@ -362,7 +362,7 @@ fastify.get('/', async (request, reply) => {
         questurl = 'https://lotapi3.pwisetthon.com/api'
     }*/
 
-    await fetch('http://192.168.31.210:5000', { 'timeout': 5000 })
+    /*await fetch('http://192.168.31.210:5000', { 'timeout': 5000 })
         .then(res => res.status)
         .then(status => {
             if (status == 200) {
@@ -373,7 +373,7 @@ fastify.get('/', async (request, reply) => {
         })
         .catch(err => {
             questurl = 'https://lotapi2.pwisetthon.com/.netlify/functions/server/'
-        })
+        })*/
 
     const lotapi = await fetch(questurl)
     const lotapijson = await lotapi.json()
