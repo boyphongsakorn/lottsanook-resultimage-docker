@@ -8,6 +8,7 @@ async () => {
         max: 2,
         timeWindow: '1 minute'
     });
+    console.log('test')
 }
 
 function padLeadingZeros(num, size) {
