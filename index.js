@@ -4,7 +4,7 @@ const fastify = require('fastify')({ logger: true })
 const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
 
 async () => {
-    await fastify.register(require('@fastify/rate-limit'), {
+    await fastify.register(import('@fastify/rate-limit'), {
         max: 2,
         timeWindow: '1 minute'
     });
