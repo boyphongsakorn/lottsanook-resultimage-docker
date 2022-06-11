@@ -433,17 +433,17 @@ fastify.get('/', async (request, reply) => {
     let bgurl
 
     if (request.query.bgimg && request.query.rmber) {
-        bgurl = 'https://raw.githubusercontent.com/Quad-B/lottsanook-resultimage-docker/main/fbrmbgabn.png'
+        bgurl = 'https://combinatronics.com/Quad-B/lottsanook-resultimage-docker/main/fbrmbgabn.png'
     } else if (request.query.bgimg) {
-        bgurl = 'https://raw.githubusercontent.com/Quad-B/lottsanook-resultimage-docker/main/fbrmbg.png'
+        bgurl = 'https://combinatronics.com/Quad-B/lottsanook-resultimage-docker/main/fbrmbg.png'
     } else if (request.query.rmber) {
-        bgurl = 'https://raw.githubusercontent.com/Quad-B/lottsanook-resultimage-docker/main/fbrmbn.png'
+        bgurl = 'https://combinatronics.com/Quad-B/lottsanook-resultimage-docker/main/fbrmbn.png'
     } else {
         //if this month is february and date <= 14
         if (datecheck.substring(2, 4) == '02' && datecheck.substring(0, 2) <= '14') {
-            bgurl = 'https://raw.githubusercontent.com/Quad-B/lottsanook-resultimage-docker/main/fbbg_val.jpg'
+            bgurl = 'https://combinatronics.com/Quad-B/lottsanook-resultimage-docker/main/fbbg_val.jpg'
         } else {
-            bgurl = 'https://raw.githubusercontent.com/Quad-B/lottsanook-resultimage-docker/main/fbbg.jpg'
+            bgurl = 'https://combinatronics.com/Quad-B/lottsanook-resultimage-docker/main/fbbg.jpg'
         }
     }
 
@@ -481,7 +481,7 @@ fastify.get('/', async (request, reply) => {
         const data = await fetch('https://thai-gold-api.herokuapp.com/latest');
         golddata = await data.json();
 
-        let headercap = '<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><style>body{font-family: \'Mitr\', font-noto-thai;background-image: url(\'https://raw.githubusercontent.com/Quad-B/lottsanook-resultimage-docker/main/fbbg_gold.png\');color: white;}</style></head>'
+        let headercap = '<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><style>body{font-family: \'Mitr\', font-noto-thai;background-image: url(\'https://combinatronics.com/Quad-B/lottsanook-resultimage-docker/main/fbbg_gold.png\');color: white;}</style></head>'
 
         await new Pageres({ delay: 1, filename: datecheck.substring(0, 2) + '-' + datecheck.substring(2, 4) + '-' + datecheck.substring(4, 8) + '_gold', launchOptions: { args: ['--no-sandbox', '--disable-setuid-sandbox', '--no-first-run', '--disable-extensions'] } })
             .src('data:text/html,' + headercap + '<h1 style="margin-top: 3px;margin-left: 5px;font-size: 65px;">ผลรางวัลสลากกินแบ่งรัฐบาล</h1><h2 style="margin-top: -30px;margin-left: 0px;font-size: 50px;margin-right: 450px;text-align: right;">เมื่อประจำวันที่ ' + parseInt(datecheck.substring(0, 2)) + ' ' + monthtext + ' ' + datecheck.substring(4, 8) + '</h2><h2 style="margin-top: 47px;font-size: 30px;margin-left: 0px;">รางวัลที่ 1</h2><h2 style="font-size: 8vw;margin-left: 0px;margin-top: -80px;margin-right: 800px;text-align: center;">' + test[0][1] + '</h2><h2 style="margin-top: -115px;font-size: 30px;">เลขหน้า สามตัว</h2><h2 style="font-size: 100px;margin-left: 170px;margin-top: -60px;">' + test[1][1] + ' | ' + test[1][2] + '</h2><h2 style="margin-left: 0px;font-size: 30px;margin-top: -70px;">เลขท้าย สามตัว</h2><h2 style="font-size: 5.96vw;margin-left: 180px;max-width: 475px;margin-top: -55px;">' + test[2][1] + ' | ' + test[2][2] + '</h2><h2 style="margin-top: -65px;font-size: 30px;position: fixed;">เลขท้าย สองตัว</h2><h2 style="margin-left: 300px;font-size: 150px;margin-top: -87px;position: fixed;">' + test[3][1] + '</h2><h1 style="margin-top: -860px;margin-left: 1010px;font-size: 65px;position: fixed;">ราคาทองวันนี้</h1><h1 style="margin-top: -625px;margin-left: 820px;font-size: 65px;position: fixed;">ทองคำ</h1><h1 style="margin-top: -500px;margin-left: 850px;font-size: 65px;position: fixed;">' + golddata.response.price.gold.buy + ' | ' + golddata.response.price.gold.sell + '</h1><h1 style="margin-top: -350px;margin-left: 792px;font-size: 60px;position: fixed;background-color: gold;padding-top: 7px;padding-left: 5px;padding-right: 5px;">ทองคำแท่ง</h1><h1 style="margin-top: -190px;margin-left: 827px;font-size: 65px;position: fixed;">' + golddata.response.price.gold_bar.buy + ' | ' + golddata.response.price.gold_bar.sell + '</h1><h1 style="position: absolute;left: 535px;top: 382px;">' + test[4][1] + ' | ' + test[4][2] + '</h1>', ['1600x1066'])
