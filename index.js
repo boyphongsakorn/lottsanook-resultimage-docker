@@ -3,6 +3,13 @@ var fs = require('fs');
 const fastify = require('fastify')({ logger: true })
 const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
 
+async () => {
+    await fastify.register(require('@fastify/rate-limit'), {
+        max: 100,
+        timeWindow: '1 minute'
+    });
+}
+
 function padLeadingZeros(num, size) {
     var s = num + "";
     while (s.length < size) s = "0" + s;
