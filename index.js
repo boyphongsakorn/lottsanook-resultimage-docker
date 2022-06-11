@@ -581,7 +581,7 @@ fastify.get('/', async (request, reply) => {
 const start = async () => {
     try {
         await fastify.register(import('@fastify/rate-limit'), {
-            max: 2,
+            max: 8,
             timeWindow: '1 minute'
         });
         console.log('test')
