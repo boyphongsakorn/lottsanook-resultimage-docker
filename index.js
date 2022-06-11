@@ -18,7 +18,7 @@ function padLeadingZeros(num, size) {
 
 let goport = process.env.PORT || 4000
 let questurl
-let requestcount = 0
+//let requestcount = 0
 
 //use request to check if http://192.168.31.210:5000 is exist
 /*request({'method': 'GET','url': 'http://192.168.31.210:5000','json': true,'headers': {},'timeout': 5000}, function(err, res, body) {
@@ -447,11 +447,11 @@ fastify.get('/', async (request, reply) => {
     }
 
     //if requestcount > 0 wait for requestcount*1 seconds
-    if (requestcount > 0) {
+    /*if (requestcount > 0) {
         await setTimeout(() => { }, requestcount * 5000)
     }
 
-    requestcount++
+    requestcount++*/
 
     if (request.query.bgimg) {
         //let headercap = '<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link href="https://fonts.googleapis.com/css2?family=Mitr&display=swap" rel="stylesheet"><style>body{font-weight: 700;font-family: \'Mitr\', font-noto-thai;background-image: url(\'http://localhost:' + goport + '/'+bgurl+'\'), url(\'' + url.parse(req.url, true).query.bgimg + '\');background-position: center, center;background-repeat: no-repeat,no-repeat;background-size: cover,cover;color: white;}</style></head>'
@@ -470,7 +470,7 @@ fastify.get('/', async (request, reply) => {
         //res.writeHead(200, { 'content-type': 'image/jpg' });
         //fs.createReadStream(datecheck.substring(0, 2) + '-' + datecheck.substring(2, 4) + '-' + datecheck.substring(4, 8) + '_cbg.jpg').pipe(res);
 
-        requestcount = requestcount - 1;
+        //requestcount = requestcount - 1;
 
         reply.type('image/jpg');
         return fs.createReadStream(__dirname + '/' + datecheck.substring(0, 2) + '-' + datecheck.substring(2, 4) + '-' + datecheck.substring(4, 8) + '_cbg.jpg');
@@ -491,7 +491,7 @@ fastify.get('/', async (request, reply) => {
         fs.createReadStream(datecheck.substring(0, 2) + '-' + datecheck.substring(2, 4) + '-' + datecheck.substring(4, 8) + '_gold.png').pipe(res);
         console.log('Finished generating screenshots!');*/
 
-        requestcount = requestcount - 1;
+        //requestcount = requestcount - 1;
 
         reply.type('image/png');
         return fs.createReadStream(__dirname + '/' + datecheck.substring(0, 2) + '-' + datecheck.substring(2, 4) + '-' + datecheck.substring(4, 8) + '_gold.png');
@@ -558,7 +558,7 @@ fastify.get('/', async (request, reply) => {
             //res.writeHead(200, { 'content-type': 'image/jpg' });
             //fs.createReadStream(datecheck.substring(0, 2) + '-' + datecheck.substring(2, 4) + '-' + datecheck.substring(4, 8) + '_' + bgurl + '.jpg').pipe(res);
 
-            requestcount = requestcount - 1;
+            //requestcount = requestcount - 1;
 
             reply.type('image/jpg');
             return fs.createReadStream(__dirname + '/' + datecheck.substring(0, 2) + '-' + datecheck.substring(2, 4) + '-' + datecheck.substring(4, 8) + '_' + bgurl + '.jpg');
