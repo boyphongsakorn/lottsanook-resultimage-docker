@@ -570,6 +570,10 @@ fastify.get('/', async (request, reply) => {
 
 const start = async () => {
     try {
+        await fastify.register(require('@fastify/rate-limit'), {
+            max: 100,
+            timeWindow: '1 minute'
+        });
         await fastify.listen(goport, '0.0.0.0')
     } catch (err) {
         fastify.log.error(err)
