@@ -15,11 +15,6 @@ let questurl
 //let requestcount = 0
 
 (async () => {
-    await fastify.register(import('@fastify/rate-limit'), {
-        max: 2,
-        timeWindow: '1 minute'
-    });
-    console.log('test')
     try {
         fetch('http://192.168.31.210:5000', { 'timeout': 5000 })
             .then(res => res.status)
@@ -622,6 +617,11 @@ fastify.get('/', async (request, reply) => {
 
 const start = async () => {
     try {
+        await fastify.register(require('@fastify/rate-limit'), {
+            max: 2,
+            timeWindow: '1 minute'
+        });
+        console.log('test')
         await fastify.listen({ port: goport, host: '0.0.0.0' })
     } catch (err) {
         fastify.log.error(err)
