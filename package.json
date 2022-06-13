@@ -22,7 +22,6 @@
     "@fastify/rate-limit": "^7.0.0",
     "fastify": "^4.0.1",
     "node-fetch": "^3.2.5",
-    "pageres": "^6.3.1",
-    "puppeteer-core": "^3.0.0"
+    "pageres": "^6.3.1"
   }
 }
