@@ -5,7 +5,6 @@ const puppeteer = require('puppeteer');
 const ratelimit = require("@fastify/rate-limit");
 
 fastify.register(ratelimit, {
-    global: true,
     max: 2,
     timeWindow: 100
 });
