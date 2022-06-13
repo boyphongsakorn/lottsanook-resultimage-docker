@@ -455,9 +455,9 @@ fastify.get('/', async (request, reply) => {
     }
 
     //if requestcount > 0 wait for requestcount*5 seconds
-    if (requestcount > 0) {
+    /*if (requestcount > 0) {
         await delay(requestcount * 5000)
-    }
+    }*/
 
     requestcount++
 
