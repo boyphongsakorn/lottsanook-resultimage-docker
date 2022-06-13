@@ -1,11 +1,13 @@
-const Pageres = require('pageres');
 var fs = require('fs');
-const Fastify = require('fastify')({ logger: true })
+const fastify = require('fastify')({logger: true});
 const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
 const puppeteer = require('puppeteer');
-const rateLimit = require('@fastify/rate-limit');
 
-const fastify = Fastify();
+fastify.register(require("@fastify/rate-limit"), {
+    global: true,
+    max: 2,
+    timeWindow: 100
+});
 
 function padLeadingZeros(num, size) {
     var s = num + "";
@@ -15,15 +17,10 @@ function padLeadingZeros(num, size) {
 
 let goport = process.env.PORT || 4000
 let questurl
-//let requestcount = 0
+//let requestcount = 
 
 (async () => {
     try {
-        await fastify.register(rateLimit, {
-            max: 2,
-            timeWindow: 1000
-        });
-        console.log('test')
         fetch('http://192.168.31.210:5000', { 'timeout': 5000 })
             .then(res => res.status)
             .then(status => {
