@@ -7,7 +7,7 @@ const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 fastify.register(ratelimit, {
     max: 2,
-    timeWindow: 100
+    timeWindow: 30000
 });
 
 function padLeadingZeros(num, size) {
