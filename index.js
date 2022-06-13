@@ -2,8 +2,9 @@ var fs = require('fs');
 const fastify = require('fastify')({logger: true});
 const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
 const puppeteer = require('puppeteer');
+const ratelimit = require("@fastify/rate-limit");
 
-fastify.register(require("@fastify/rate-limit"), {
+fastify.register(ratelimit, {
     global: true,
     max: 2,
     timeWindow: 100
