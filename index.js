@@ -453,9 +453,11 @@ fastify.get('/', async (request, reply) => {
         }
     }
 
-    //if requestcount > 0 wait for requestcount*1 seconds
+    //if requestcount > 0 wait for requestcount*5 seconds
     if (requestcount > 0) {
-        return 'test';
+        await setTimeout(() => {
+            console.log('wait for ' + requestcount * 5 + ' seconds')
+        }, requestcount * 5000)
     }
 
     requestcount++
@@ -481,9 +483,10 @@ fastify.get('/', async (request, reply) => {
 
         await browser.close();
 
-        requestcount = requestcount - 1;
-
-        console.log(requestcount)
+        //after 30 seconds, requestcount will be requestcount - 1
+        setTimeout(function () {
+            requestcount = requestcount - 1;
+        }, 30000);
 
         reply.type('image/png');
         return image;
@@ -512,14 +515,17 @@ fastify.get('/', async (request, reply) => {
         fs.createReadStream(datecheck.substring(0, 2) + '-' + datecheck.substring(2, 4) + '-' + datecheck.substring(4, 8) + '_gold.png').pipe(res);
         console.log('Finished generating screenshots!');*/
 
-        requestcount = requestcount - 1;
-
         const browser = await puppeteer.launch({ args: ['--no-sandbox', '--disable-setuid-sandbox', '--no-first-run', '--disable-extensions'] });
         const page = await browser.newPage();
         await page.setViewport({ width: 1600, height: 1066 });
         await page.goto('data:text/html,' + headercap + '<h1 style="margin-top: 3px;margin-left: 5px;font-size: 65px;">ผลรางวัลสลากกินแบ่งรัฐบาล</h1><h2 style="margin-top: -30px;margin-left: 0px;font-size: 50px;margin-right: 450px;text-align: right;">เมื่อประจำวันที่ ' + parseInt(datecheck.substring(0, 2)) + ' ' + monthtext + ' ' + datecheck.substring(4, 8) + '</h2><h2 style="margin-top: 47px;font-size: 30px;margin-left: 0px;">รางวัลที่ 1</h2><h2 style="font-size: 8vw;margin-left: 0px;margin-top: -80px;margin-right: 800px;text-align: center;">' + test[0][1] + '</h2><h2 style="margin-top: -115px;font-size: 30px;">เลขหน้า สามตัว</h2><h2 style="font-size: 100px;margin-left: 170px;margin-top: -60px;">' + test[1][1] + ' | ' + test[1][2] + '</h2><h2 style="margin-left: 0px;font-size: 30px;margin-top: -70px;">เลขท้าย สามตัว</h2><h2 style="font-size: 5.96vw;margin-left: 180px;max-width: 475px;margin-top: -55px;">' + test[2][1] + ' | ' + test[2][2] + '</h2><h2 style="margin-top: -65px;font-size: 30px;position: fixed;">เลขท้าย สองตัว</h2><h2 style="margin-left: 300px;font-size: 150px;margin-top: -87px;position: fixed;">' + test[3][1] + '</h2><h1 style="margin-top: -860px;margin-left: 1010px;font-size: 65px;position: fixed;">ราคาทองวันนี้</h1><h1 style="margin-top: -625px;margin-left: 820px;font-size: 65px;position: fixed;">ทองคำ</h1><h1 style="margin-top: -500px;margin-left: 850px;font-size: 65px;position: fixed;">' + golddata.response.price.gold.buy + ' | ' + golddata.response.price.gold.sell + '</h1><h1 style="margin-top: -350px;margin-left: 792px;font-size: 60px;position: fixed;background-color: gold;padding-top: 7px;padding-left: 5px;padding-right: 5px;">ทองคำแท่ง</h1><h1 style="margin-top: -190px;margin-left: 827px;font-size: 65px;position: fixed;">' + golddata.response.price.gold_bar.buy + ' | ' + golddata.response.price.gold_bar.sell + '</h1><h1 style="position: absolute;left: 535px;top: 382px;">' + test[4][1] + ' | ' + test[4][2] + '</h1>')
         await page.waitForTimeout(1000);
         const image = await page.screenshot();
+
+        //after 30 seconds, requestcount will be requestcount - 1
+        setTimeout(function () {
+            requestcount = requestcount - 1;
+        }, 30000);
 
         //reply.type('image/png');
         //return fs.createReadStream(__dirname + '/' + datecheck.substring(0, 2) + '-' + datecheck.substring(2, 4) + '-' + datecheck.substring(4, 8) + '_gold.png');
@@ -600,7 +606,10 @@ fastify.get('/', async (request, reply) => {
 
         console.log(requestcount);
 
-        requestcount = requestcount - 1;
+        //after 30 seconds, requestcount will be requestcount - 1
+        setTimeout(function () {
+            requestcount = requestcount - 1;
+        }, 30000);
 
         await browser.close();
 
