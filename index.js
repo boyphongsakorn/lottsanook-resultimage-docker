@@ -3,6 +3,7 @@ const fastify = require('fastify')({logger: true});
 const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
 const puppeteer = require('puppeteer');
 const ratelimit = require("@fastify/rate-limit");
+const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 fastify.register(ratelimit, {
     max: 2,
@@ -455,9 +456,7 @@ fastify.get('/', async (request, reply) => {
 
     //if requestcount > 0 wait for requestcount*5 seconds
     if (requestcount > 0) {
-        await setTimeout(() => {
-            console.log('wait for ' + requestcount * 5 + ' seconds')
-        }, requestcount * 5000)
+        await delay(requestcount * 5000)
     }
 
     requestcount++
