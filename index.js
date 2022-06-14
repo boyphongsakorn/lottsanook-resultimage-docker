@@ -382,7 +382,7 @@ fastify.get('/', async (request, reply) => {
             questurl = 'https://lotapi2.pwisetthon.com/.netlify/functions/server/'
         })*/
 
-    const lotapi = await fetch(questurl)
+    const lotapi = await fetch(questurl+'/?date='+datecheck, { 'timeout': 5000 })
     const lotapijson = await lotapi.json()
 
     console.log(questurl)
