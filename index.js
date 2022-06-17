@@ -1,5 +1,5 @@
 var fs = require('fs');
-const fastify = require('fastify')({logger: true});
+const fastify = require('fastify')({ logger: true });
 const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
 const puppeteer = require('puppeteer');
 const ratelimit = require("@fastify/rate-limit");
@@ -382,7 +382,7 @@ fastify.get('/', async (request, reply) => {
             questurl = 'https://lotapi2.pwisetthon.com/.netlify/functions/server/'
         })*/
 
-    const lotapi = await fetch(questurl+'/?date='+datecheck, { 'timeout': 5000 })
+    const lotapi = await fetch(questurl + '/?date=' + datecheck, { 'timeout': 5000 })
     const lotapijson = await lotapi.json()
 
     console.log(questurl)
@@ -634,7 +634,7 @@ fastify.get('/', async (request, reply) => {
 
 const start = async () => {
     try {
-        await fastify.listen(goport, '0.0.0.0')
+        await fastify.listen({ port: goport, host: '0.0.0.0' })
     } catch (err) {
         fastify.log.error(err)
         process.exit(1)
