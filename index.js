@@ -5,11 +5,6 @@ const puppeteer = require('puppeteer');
 const ratelimit = require("@fastify/rate-limit");
 const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 
-await fastify.register(ratelimit, {
-    max: 4,
-    timeWindow: 30000
-});
-
 function padLeadingZeros(num, size) {
     var s = num + "";
     while (s.length < size) s = "0" + s;
@@ -21,8 +16,12 @@ let questurl
 let requestcount = 0;
 
 (async () => {
-    try {
-        fetch('http://192.168.31.210:5000', { 'timeout': 5000 })
+    await fastify.register(ratelimit, {
+        max: 4,
+        timeWindow: 30000
+    });
+    //try {
+        await fetch('http://192.168.31.210:5000', { 'timeout': 5000 })
             .then(res => res.status)
             .then(status => {
                 //if status is 2xx, then we can start the server
@@ -35,9 +34,9 @@ let requestcount = 0;
             .catch(err => {
                 questurl = 'https://lotapi3.pwisetthon.com/api'
             })
-    } catch (e) {
+    //} catch (e) {
         // Deal with the fact the chain failed
-    }
+    //}
     // `text` is not available here
 })()
 
