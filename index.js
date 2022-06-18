@@ -5,7 +5,7 @@ const puppeteer = require('puppeteer');
 const ratelimit = require("@fastify/rate-limit");
 const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 
-fastify.register(ratelimit, {
+await fastify.register(ratelimit, {
     max: 4,
     timeWindow: 30000
 });
@@ -634,7 +634,7 @@ fastify.get('/', async (request, reply) => {
 
 const start = async () => {
     try {
-        await fastify.listen({ port: goport, host: '0.0.0.0' })
+        await fastify.listen(goport,'0.0.0.0' )
     } catch (err) {
         fastify.log.error(err)
         process.exit(1)
