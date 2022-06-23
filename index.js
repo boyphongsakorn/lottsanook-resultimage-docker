@@ -382,6 +382,8 @@ fastify.get('/', async (request, reply) => {
 
     const lotapi = await fetch(questurl + '/?date=' + datecheck, { 'timeout': 5000 })
     const lotapijson = await lotapi.json()
+    const isday = await fetch(questurl + '/reto', { 'timeout': 5000 })
+    const isdaytext = await isday.text()
 
     console.log(questurl)
 
@@ -390,7 +392,7 @@ fastify.get('/', async (request, reply) => {
 
     console.log(datecheck)
     try {
-        if (fs.existsSync(datecheck.substring(0, 2) + '-' + datecheck.substring(2, 4) + '-' + datecheck.substring(4, 8) + '_normal.png') && datecheck == date + month + byear) {
+        if (fs.existsSync(datecheck.substring(0, 2) + '-' + datecheck.substring(2, 4) + '-' + datecheck.substring(4, 8) + '_normal.png') && (datecheck == date + month + byear && isdaytext == 'yes')) {
             fs.unlinkSync(datecheck.substring(0, 2) + '-' + datecheck.substring(2, 4) + '-' + datecheck.substring(4, 8) + '_normal.png')
             console.log('remove today image')
             thisistoday = true
