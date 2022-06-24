@@ -20,18 +20,18 @@ let questurl
         timeWindow: 30000
     });
     //try {
-    await fetch('https://lottsanook-cfworker.boy1556.workers.dev', { 'timeout': 2000 })
+    await fetch('http://192.168.31.210:5000', { 'timeout': 2000 })
         .then(res => res.status)
         .then(status => {
             //if status is 2xx, then we can start the server
             if (status >= 200 && status < 300) {
-                questurl = 'https://lottsanook-cfworker.boy1556.workers.dev'
+                questurl = 'http://192.168.31.210:5000'
             } else {
-                questurl = 'https://lotapi3.pwisetthon.com/api'
+                questurl = 'https://lottsanook-cfworker.boy1556.workers.dev'
             }
         })
         .catch(err => {
-            questurl = 'https://lotapi3.pwisetthon.com/api'
+            questurl = 'https://lottsanook-cfworker.boy1556.workers.dev'
         })
     //} catch (e) {
     // Deal with the fact the chain failed
