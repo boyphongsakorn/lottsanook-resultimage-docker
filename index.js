@@ -392,9 +392,6 @@ fastify.get('/', async (request, reply) => {
 
     console.log(datecheck)
     try {
-        if(request.query.fresh == true || request.query.fresh == 'true' || test[0][1] == 0 || test[0][1] == '0') {
-            await fs.unlinkSync(datecheck.substring(0, 2) + '-' + datecheck.substring(2, 4) + '-' + datecheck.substring(4, 8) + '_normal.png')
-        }
         if (fs.existsSync(datecheck.substring(0, 2) + '-' + datecheck.substring(2, 4) + '-' + datecheck.substring(4, 8) + '_normal.png') && (datecheck == date + month + byear && isdaytext == 'yes')) {
             fs.unlinkSync(datecheck.substring(0, 2) + '-' + datecheck.substring(2, 4) + '-' + datecheck.substring(4, 8) + '_normal.png')
             console.log('remove today image')
@@ -403,7 +400,12 @@ fastify.get('/', async (request, reply) => {
             if (!fs.existsSync(datecheck.substring(0, 2) + '-' + datecheck.substring(2, 4) + '-' + datecheck.substring(4, 8) + '_normal.png')) {
                 thisistoday = true
             } else {
-                thisistoday = false
+                if(request.query.fresh == true || request.query.fresh == 'true' || test[0][1] == 0 || test[0][1] == '0') {
+                    await fs.unlinkSync(datecheck.substring(0, 2) + '-' + datecheck.substring(2, 4) + '-' + datecheck.substring(4, 8) + '_normal.png')
+                    thisistoday = true
+                }else{
+                    thisistoday = false
+                }
             }
         }
         /*if (fs.existsSync(datecheck.substring(0, 2) + '-' + datecheck.substring(2, 4) + '-' + datecheck.substring(4, 8) + '.png') && datecheck == date + month + byear) {
@@ -617,7 +619,7 @@ fastify.get('/', async (request, reply) => {
 
             //return image
 
-            if(!request.query.rmber){
+            if(!request.query.rmber || test[0][1] != 0 || test[0][1] != '0'){
                 fs.writeFile(datecheck.substring(0, 2) + '-' + datecheck.substring(2, 4) + '-' + datecheck.substring(4, 8) + '_normal.png', image, function (err) {
                     if (err) {
                         return console.log(err);
