@@ -579,7 +579,7 @@ fastify.get('/', async (request, reply) => {
         //});
 
     } else {
-        if (thisistoday && !request.query.rmber) {
+        if (thisistoday) {
             //let headercap = '<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link href="https://fonts.googleapis.com/css2?family=Mitr&display=swap" rel="stylesheet"><style>body{font-family: \'Mitr\', font-noto-thai;background-image: url(\'http://localhost:' + goport + '/'+bgurl+'\');color: white;}</style></head>'
             let headercap = '<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><style>body{font-family: \'Mitr\', font-noto-thai;background-image: url(\'' + bgurl + '\');color: white;}</style></head>'
 
@@ -614,12 +614,14 @@ fastify.get('/', async (request, reply) => {
 
             //return image
 
-            fs.writeFile(datecheck.substring(0, 2) + '-' + datecheck.substring(2, 4) + '-' + datecheck.substring(4, 8) + '_normal.png', image, function (err) {
-                if (err) {
-                    return console.log(err);
-                }
-                console.log('The file ' + datecheck.substring(0, 2) + '-' + datecheck.substring(2, 4) + '-' + datecheck.substring(4, 8) + '_normal.png' + ' was saved!');
-            });
+            if(!request.query.rmber){
+                fs.writeFile(datecheck.substring(0, 2) + '-' + datecheck.substring(2, 4) + '-' + datecheck.substring(4, 8) + '_normal.png', image, function (err) {
+                    if (err) {
+                        return console.log(err);
+                    }
+                    console.log('The file ' + datecheck.substring(0, 2) + '-' + datecheck.substring(2, 4) + '-' + datecheck.substring(4, 8) + '_normal.png' + ' was saved!');
+                });
+            }
 
             reply.type('image/png');
             return image;
