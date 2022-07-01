@@ -579,7 +579,7 @@ fastify.get('/', async (request, reply) => {
         //});
 
     } else {
-        if (thisistoday) {
+        if (thisistoday || request.query.rmber) {
             //let headercap = '<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link href="https://fonts.googleapis.com/css2?family=Mitr&display=swap" rel="stylesheet"><style>body{font-family: \'Mitr\', font-noto-thai;background-image: url(\'http://localhost:' + goport + '/'+bgurl+'\');color: white;}</style></head>'
             let headercap = '<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><style>body{font-family: \'Mitr\', font-noto-thai;background-image: url(\'' + bgurl + '\');color: white;}</style></head>'
 
