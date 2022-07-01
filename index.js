@@ -392,7 +392,7 @@ fastify.get('/', async (request, reply) => {
 
     console.log(datecheck)
     try {
-        if(request.query.fresh == true || request.query.fresh == 'true'){
+        if(request.query.fresh == true || request.query.fresh == 'true' || test[0][1] == 0 || test[0][1] == '0') {
             await fs.unlinkSync(datecheck.substring(0, 2) + '-' + datecheck.substring(2, 4) + '-' + datecheck.substring(4, 8) + '_normal.png')
         }
         if (fs.existsSync(datecheck.substring(0, 2) + '-' + datecheck.substring(2, 4) + '-' + datecheck.substring(4, 8) + '_normal.png') && (datecheck == date + month + byear && isdaytext == 'yes')) {
