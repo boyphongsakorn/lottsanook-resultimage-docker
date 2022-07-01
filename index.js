@@ -400,7 +400,7 @@ fastify.get('/', async (request, reply) => {
             if (!fs.existsSync(datecheck.substring(0, 2) + '-' + datecheck.substring(2, 4) + '-' + datecheck.substring(4, 8) + '_normal.png')) {
                 thisistoday = true
             } else {
-                if(request.query.fresh == true || request.query.fresh == 'true' || test[0][1] == 0 || test[0][1] == '0') {
+                if(request.query.fresh == true || request.query.fresh == 'true') {
                     await fs.unlinkSync(datecheck.substring(0, 2) + '-' + datecheck.substring(2, 4) + '-' + datecheck.substring(4, 8) + '_normal.png')
                     thisistoday = true
                 }else{
