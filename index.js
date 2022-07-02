@@ -619,7 +619,7 @@ fastify.get('/', async (request, reply) => {
 
             //return image
 
-            if(!request.query.rmber || test[0][1] != 0 || test[0][1] != '0'){
+            if(!request.query.rmber && test[0][1] != 0 && test[0][1] != '0'){
                 fs.writeFile(datecheck.substring(0, 2) + '-' + datecheck.substring(2, 4) + '-' + datecheck.substring(4, 8) + '_normal.png', image, function (err) {
                     if (err) {
                         return console.log(err);
