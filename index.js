@@ -10,8 +10,8 @@ function padLeadingZeros(num, size) {
     return s;
 }
 
-let goport = process.env.PORT || 4000
-let questurl = 'https://lotapi3.pwisetthon.com'
+let goport = process.env.PORT || 4000;
+let questurl = 'https://lotapi3.pwisetthon.com';
 //let requestcount = 0;
 
 (async () => {
