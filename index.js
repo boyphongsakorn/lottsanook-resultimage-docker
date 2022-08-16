@@ -643,6 +643,9 @@ fastify.get('/', async (request, reply) => {
             //fs.createReadStream(datecheck.substring(0, 2) + '-' + datecheck.substring(2, 4) + '-' + datecheck.substring(4, 8) + '_' + bgurl + '.jpg').pipe(res);
             //console.log('Finished loading screenshots!');
 
+            /*reply.type('image/jpg');
+            return fs.createReadStream(__dirname + '/' + datecheck.substring(0, 2) + '-' + datecheck.substring(2, 4) + '-' + datecheck.substring(4, 8) + '_normal.jpg');*/
+
             reply.type('image/png');
             return fs.createReadStream(__dirname + '/' + datecheck.substring(0, 2) + '-' + datecheck.substring(2, 4) + '-' + datecheck.substring(4, 8) + '_normal.png');
         }
