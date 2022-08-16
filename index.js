@@ -11,7 +11,7 @@ function padLeadingZeros(num, size) {
 }
 
 let goport = process.env.PORT || 4000
-let questurl
+let questurl = 'https://lotapi3.pwisetthon.com'
 //let requestcount = 0;
 
 (async () => {
@@ -382,22 +382,6 @@ fastify.get('/', async (request, reply) => {
             questurl = 'https://lotapi2.pwisetthon.com/.netlify/functions/server/'
         })*/
 
-    await fetch('http://192.168.31.210:5000', { 'timeout': 2000 })
-        .then(res => res.status)
-        .then(status => {
-            //if status is 2xx, then we can start the server
-            if (status >= 200 && status < 300) {
-                questurl = 'http://192.168.31.210:5000'
-            } else {
-                //questurl = 'https://lottsanook-cfworker.boy1556.workers.dev'
-                questurl = 'https://lotapi3.pwisetthon.com'
-            }
-        })
-        .catch(err => {
-            //questurl = 'https://lottsanook-cfworker.boy1556.workers.dev'
-            questurl = 'https://lotapi3.pwisetthon.com'
-        })
-
     const lotapi = await fetch(questurl + '/?date=' + datecheck, { 'timeout': 5000 })
     const lotapijson = await lotapi.json()
     const isday = await fetch(questurl + '/reto', { 'timeout': 5000 })
@@ -418,10 +402,10 @@ fastify.get('/', async (request, reply) => {
             if (!fs.existsSync(datecheck.substring(0, 2) + '-' + datecheck.substring(2, 4) + '-' + datecheck.substring(4, 8) + '_normal.png')) {
                 thisistoday = true
             } else {
-                if (request.query.fresh == true || request.query.fresh == 'true') {
+                if(request.query.fresh == true || request.query.fresh == 'true') {
                     await fs.unlinkSync(datecheck.substring(0, 2) + '-' + datecheck.substring(2, 4) + '-' + datecheck.substring(4, 8) + '_normal.png')
                     thisistoday = true
-                } else {
+                }else{
                     thisistoday = false
                 }
             }
@@ -637,7 +621,7 @@ fastify.get('/', async (request, reply) => {
 
             //return image
 
-            if (!request.query.rmber && test[0][1] != 0 && test[0][1] != '0') {
+            if(!request.query.rmber && test[0][1] != 0 && test[0][1] != '0'){
                 fs.writeFile(datecheck.substring(0, 2) + '-' + datecheck.substring(2, 4) + '-' + datecheck.substring(4, 8) + '_normal.png', image, function (err) {
                     if (err) {
                         return console.log(err);
