@@ -27,8 +27,8 @@ let questurl = 'https://lotapi3.pwisetthon.com';
             if (status >= 200 && status < 300) {
                 questurl = 'http://192.168.31.210:5000'
             } else {
-                //questurl = 'https://lottsanook-cfworker.boy1556.workers.dev'
-                questurl = 'https://lotapi3.pwisetthon.com'
+                questurl = 'https://lottsanook-cfworker.boy1556.workers.dev'
+                //questurl = 'https://lotapi3.pwisetthon.com'
             }
         })
         .catch(err => {
