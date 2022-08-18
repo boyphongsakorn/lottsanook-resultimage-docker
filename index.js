@@ -339,8 +339,13 @@ fastify.get('/', async (request, reply) => {
     let datecheck
     let thisistoday = true
 
-    if (request.query.date) {
+    const latest = await fetch(questurl + '/lastlot?info=true', { 'timeout': 5000 })
+    const latestjson = await latest.json()
+
+    if (request.query.date != undefined && request.query.date != null) {
         datecheck = request.query.date;
+    } else if (request.query.latest == 'true') {
+        datecheck = latestjson.info.date;
     } else {
         datecheck = date + month + byear;
     }
