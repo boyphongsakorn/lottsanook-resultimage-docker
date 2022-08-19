@@ -457,6 +457,8 @@ fastify.get('/', async (request, reply) => {
         bgurl = 'https://raw.githubusercontent.com/quad-b/lottsanook-resultimage-docker/main/fbrmbg.png'
     } else if (request.query.rmber) {
         bgurl = 'https://raw.githubusercontent.com/quad-b/lottsanook-resultimage-docker/main/fbrmbn.png'
+    } else if (request.query.tile == 'true') {
+        bgurl = 'https://raw.githubusercontent.com/quad-b/lottsanook-resultimage-docker/main/lot_seq.png'
     } else {
         //if this month is february and date <= 14
         if (datecheck.substring(2, 4) == '02' && datecheck.substring(0, 2) <= '14') {
@@ -589,7 +591,8 @@ fastify.get('/', async (request, reply) => {
         fs.createReadStream(datecheck.substring(0, 2) + '-' + datecheck.substring(2, 4) + '-' + datecheck.substring(4, 8) + '_gold.png').pipe(res);
         console.log('Finished generating screenshots!');*/
         //});
-
+    } else if(request.query.tile == 'true'){
+        let headercap = '<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><style>body{font-family: \'Mitr\', font-noto-thai;background: url(' + bgurl + '),linear-gradient(74deg, rgba(255,230,0,1) 0%, rgba(0,146,210,1) 100%);color: black;padding-left: 0px;margin-left: 0px;}</style></head>'
     } else {
         if (thisistoday || request.query.rmber) {
             //let headercap = '<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link href="https://fonts.googleapis.com/css2?family=Mitr&display=swap" rel="stylesheet"><style>body{font-family: \'Mitr\', font-noto-thai;background-image: url(\'http://localhost:' + goport + '/'+bgurl+'\');color: white;}</style></head>'
