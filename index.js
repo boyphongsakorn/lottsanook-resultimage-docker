@@ -603,7 +603,7 @@ fastify.get('/', async (request, reply) => {
         console.log('Finished generating screenshots!');
 
         await browser.close();
-        reply.type('image/png');
+        reply.type('image/jpeg');
         return image;
     } else {
         if (thisistoday || request.query.rmber) {
