@@ -451,20 +451,22 @@ fastify.get('/', async (request, reply) => {
 
     let bgurl
 
-    if (request.query.bgimg && request.query.rmber) {
-        bgurl = 'https://raw.githubusercontent.com/quad-b/lottsanook-resultimage-docker/main/fbrmbgabn.png'
-    } else if (request.query.bgimg) {
-        bgurl = 'https://raw.githubusercontent.com/quad-b/lottsanook-resultimage-docker/main/fbrmbg.png'
-    } else if (request.query.rmber) {
-        bgurl = 'https://raw.githubusercontent.com/quad-b/lottsanook-resultimage-docker/main/fbrmbn.png'
-    } else if (request.query.tile == 'true') {
+    if (request.query.tile == 'true') {
         bgurl = 'https://raw.githubusercontent.com/quad-b/lottsanook-resultimage-docker/main/lot_seq.png'
-    } else {
-        //if this month is february and date <= 14
-        if (datecheck.substring(2, 4) == '02' && datecheck.substring(0, 2) <= '14') {
-            bgurl = 'https://raw.githubusercontent.com/quad-b/lottsanook-resultimage-docker/main/fbbg_val.jpg'
+    }else{
+        if (request.query.bgimg && request.query.rmber) {
+            bgurl = 'https://raw.githubusercontent.com/quad-b/lottsanook-resultimage-docker/main/fbrmbgabn.png'
+        } else if (request.query.bgimg) {
+            bgurl = 'https://raw.githubusercontent.com/quad-b/lottsanook-resultimage-docker/main/fbrmbg.png'
+        } else if (request.query.rmber) {
+            bgurl = 'https://raw.githubusercontent.com/quad-b/lottsanook-resultimage-docker/main/fbrmbn.png'
         } else {
-            bgurl = 'https://raw.githubusercontent.com/quad-b/lottsanook-resultimage-docker/main/fbbg.jpg'
+            //if this month is february and date <= 14
+            if (datecheck.substring(2, 4) == '02' && datecheck.substring(0, 2) <= '14') {
+                bgurl = 'https://raw.githubusercontent.com/quad-b/lottsanook-resultimage-docker/main/fbbg_val.jpg'
+            } else {
+                bgurl = 'https://raw.githubusercontent.com/quad-b/lottsanook-resultimage-docker/main/fbbg.jpg'
+            }
         }
     }
 
