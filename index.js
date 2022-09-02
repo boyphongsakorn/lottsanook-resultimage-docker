@@ -1,8 +1,8 @@
-var fs = require('fs');
-const fastify = require('fastify')({ logger: true });
-const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
-const puppeteer = require('puppeteer');
-const ratelimit = require("@fastify/rate-limit");
+import fs from 'fs'
+import fetch from 'node-fetch';
+import puppeteer from 'puppeteer';
+import Fastify from 'fastify'
+const fastify = Fastify({ logger: true })
 
 function padLeadingZeros(num, size) {
     var s = num + "";
@@ -14,11 +14,12 @@ let goport = process.env.PORT || 4000;
 let questurl = 'https://lotapi3.pwisetthon.com';
 //let requestcount = 0;
 
-(async () => {
-    await fastify.register(ratelimit, {
-        max: 4,
-        timeWindow: 30000
-    });
+await fastify.register(import('@fastify/rate-limit'), {
+    max: 4,
+    timeWindow: '1 minute'
+})
+
+//(async () => {
     //try {
     await fetch('http://192.168.31.210:5000', { 'timeout': 2000 })
         .then(res => res.status)
@@ -39,7 +40,7 @@ let questurl = 'https://lotapi3.pwisetthon.com';
     // Deal with the fact the chain failed
     //}
     // `text` is not available here
-})()
+//})()
 
 //use request to check if http://192.168.31.210:5000 is exist
 /*request({'method': 'GET','url': 'http://192.168.31.210:5000','json': true,'headers': {},'timeout': 5000}, function(err, res, body) {

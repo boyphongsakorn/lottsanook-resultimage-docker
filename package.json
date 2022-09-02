@@ -23,5 +23,6 @@
     "fastify": "4.5.0",
     "node-fetch": "^3.2.10",
     "puppeteer": "^14.4.1"
-  }
+  },
+  "type": "module"
 }
