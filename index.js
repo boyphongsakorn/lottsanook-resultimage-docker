@@ -16,7 +16,7 @@ let questurl = 'https://lotapi3.pwisetthon.com';
 
 await fastify.register(import('@fastify/rate-limit'), {
     max: 4,
-    timeWindow: '1 minute'
+    timeWindow: 30000
 })
 
 //(async () => {
