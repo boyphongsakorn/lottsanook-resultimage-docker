@@ -89,7 +89,8 @@ FROM node:lts-alpine
 
 #RUN ln -s /usr/local/lib/libevent-2.1.so.6 /usr/lib/libevent-2.1.so.6
 #RUN mkdir /usr/lib64 && ln -s /usr/local/lib/libevent-2.1.so.6 /usr/lib64/libevent-2.1.so.6
-RUN apk add --no-cache font-noto-thai && apk add --no-cache libevent libevent-dev chromium --repository=http://dl-cdn.alpinelinux.org/alpine/v3.11/community
+RUN apk add --no-cache font-noto-thai libevent libevent-dev 
+RUN apk add --no-cache chromium --repository=http://dl-cdn.alpinelinux.org/alpine/v3.11/community
 
 # Google fonts
 #RUN wget https://github.com/google/fonts/archive/main.tar.gz -O gf.tar.gz
