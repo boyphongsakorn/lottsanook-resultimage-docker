@@ -1,9 +1,0 @@
-version : '2'
-services :
-  server :
-    build: .
-    volumes :
-      - /app/node_modules
-      - ./:/app
-    ports:
-      - "4000:3000"
