@@ -110,7 +110,7 @@ RUN rm ./Mitr-Regular.ttf
 #COPY package*.json ./
 #COPY pnpm-*.yaml ./
 #RUN pnpm fetch --prod
-#ADD . ./
+ADD . ./
 #RUN pnpm install -r --offline --prod
 
 #RUN pnpm install
@@ -119,5 +119,4 @@ RUN npm install
 # If you are building your code for production
 # RUN npm ci --only=production
 #COPY . .
-ADD . ./
 CMD ["npm","run","dev"]
