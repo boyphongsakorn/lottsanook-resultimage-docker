@@ -617,6 +617,7 @@ fastify.get('/', async (request, reply) => {
             const buffer = await checkimage.buffer();
             const status = await checkimage.status;
             if (status == 200) {
+                console.log('Image found');
                 reply.type('image/jpeg');
                 return buffer;
             } else {
