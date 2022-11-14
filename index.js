@@ -328,18 +328,8 @@ fastify.get('/fbbggold', async (request, reply) => {
 })
 
 fastify.get('/', async (request, reply) => {
-    let datecheck
-
-    if (request.query.date != undefined && request.query.date != null) {
-        datecheck = request.query.date;
-    } else if (request.query.latest == 'true') {
-        datecheck = latestjson.info.date;
-    } else {
-        datecheck = date + month + byear;
-    }
-
     if (request.query.date && Object.keys(request.query).length == 1) {
-        const checkimage = await fetch('https://raw.githubusercontent.com/boyphongsakorn/testrepo/main/img_tmp/'+datecheck);
+        const checkimage = await fetch('https://raw.githubusercontent.com/boyphongsakorn/testrepo/main/img_tmp/'+request.query.date);
         const buffer = await checkimage.buffer();
         const status = await checkimage.status;
         if (status == 200) {
@@ -359,9 +349,18 @@ fastify.get('/', async (request, reply) => {
 
     let test
     let thisistoday = true
+    let datecheck
 
     const latest = await fetch(questurl + '/lastlot?info=true', { 'timeout': 5000 })
     const latestjson = await latest.json()
+    
+    if (request.query.date != undefined && request.query.date != null) {
+        datecheck = request.query.date;
+    } else if (request.query.latest == 'true') {
+        datecheck = latestjson.info.date;
+    } else {
+        datecheck = date + month + byear;
+    }
 
     try {
         //console.log(fs.statSync("out.log").size)
