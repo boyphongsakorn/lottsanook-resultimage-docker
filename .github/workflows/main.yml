@@ -16,11 +16,11 @@ jobs:
         uses: actions/checkout@v3
         
       - run: npm install #npm ci # or yarn install
-      - run: npm install eslint --global
+      #- run: npm install eslint --global
       #- run: npm install eslint-plugin-only-warn --global
       #- run: npm install eslint-plugin-only-warn@latest --save-dev
-      - run: eslint --no-eslintrc --rule 'quote-props:warn' --parser-options=ecmaVersion:13 --parser-options=sourceType:module --quiet --fix --ext .js index.js
-      - run: rm -rf node_modules
+      #- run: eslint --no-eslintrc --rule 'quote-props:warn' --parser-options=ecmaVersion:13 --parser-options=sourceType:module --quiet --fix --ext .js index.js
+      #- run: rm -rf node_modules
       #- run: rm pnpm-lock.yaml
 
       - name: Prepare
