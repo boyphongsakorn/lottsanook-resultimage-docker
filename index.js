@@ -330,9 +330,9 @@ fastify.get('/fbbggold', async (request, reply) => {
 fastify.get('/', async (request, reply) => {
     if (request.query.date && Object.keys(request.query).length == 1) {
         const checkimage = await fetch('https://raw.githubusercontent.com/boyphongsakorn/testrepo/main/img_tmp/'+request.query.date);
-        const buffer = await checkimage.buffer();
         const status = await checkimage.status;
         if (status == 200) {
+            const buffer = await checkimage.buffer();
             console.log('Image found');
             reply.type('image/jpeg');
             return buffer;
