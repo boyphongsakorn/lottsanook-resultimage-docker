@@ -15,7 +15,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         
-      - run: npm install #npm ci # or yarn install
+      #- run: npm install #npm ci # or yarn install
       #- run: npm install eslint --global
       #- run: npm install eslint-plugin-only-warn --global
       #- run: npm install eslint-plugin-only-warn@latest --save-dev
