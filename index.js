@@ -328,6 +328,18 @@ fastify.get('/fbbggold', async (request, reply) => {
 })
 
 fastify.get('/', async (request, reply) => {
+    //if request.query is just date
+    if (request.query.indexOf('date') == 0 && request.query.length == 1) {
+        const checkimage = await fetch('https://raw.githubusercontent.com/boyphongsakorn/testrepo/main/img_tmp/'+datecheck);
+        const buffer = await checkimage.buffer();
+        const status = await checkimage.status;
+        if (status == 200) {
+            console.log('Image found');
+            reply.type('image/jpeg');
+            return buffer;
+        }
+    }
+
     let date = new Date().getDate();
     let month = new Date().getMonth() + 1;
     let year = new Date().getFullYear();
