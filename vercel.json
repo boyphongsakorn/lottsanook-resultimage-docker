@@ -11,7 +11,5 @@
           "dest": "index.js"
         }
     ],
-    {
     "installCommand": "pnpm install --no-frozen-lockfile"
-    }
-  }
+}
