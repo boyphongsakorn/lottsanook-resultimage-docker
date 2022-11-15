@@ -255,15 +255,16 @@ fastify.get('/', async (request, reply) => {
         if (request.query.bgimg) {
             headercap = '<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><style>body{font-family: \'Mitr\', font-noto-thai;background: url(' + bgurl + '),url(\'' + request.query.bgimg + '\');color: black;padding-left: 0px;margin-left: 0px;background-position: center, center;background-repeat: no-repeat,no-repeat;background-size: cover,cover;}</style></head>'
         }
+        let browser
         if (request.query.hostname == 'lottsanook-resultimage-docker.vercel.app') {
             //const browser = await puppeteercore.launch({
-            const browser = await puppeteer.launch({
+            browser = await puppeteer.launch({
                 args: chrome.args,
                 executablePath: await chrome.executablePath,
                 headless: chrome.headless,
             });
         } else {
-            const browser = await puppeteer.launch({ args: ['--no-sandbox', '--disable-setuid-sandbox', '--no-first-run', '--disable-extensions'] });
+            browser = await puppeteer.launch({ args: ['--no-sandbox', '--disable-setuid-sandbox', '--no-first-run', '--disable-extensions'] });
         }
         const page = await browser.newPage();
         await page.setViewport({ width: 2048, height: 2048 });
@@ -416,15 +417,16 @@ fastify.get('/', async (request, reply) => {
                         .run();*/
 
                     //const browser = await puppeteer.launch({ args: ['--no-sandbox', '--disable-setuid-sandbox', '--no-first-run', '--disable-extensions'] });
+                    let browser
                     if (request.query.hostname == 'lottsanook-resultimage-docker.vercel.app') {
                         //const browser = await puppeteercore.launch({
-                        const browser = await puppeteer.launch({
+                        browser = await puppeteer.launch({
                             args: chrome.args,
                             executablePath: await chrome.executablePath,
                             headless: chrome.headless,
                         });
                     } else {
-                        const browser = await puppeteer.launch({ args: ['--no-sandbox', '--disable-setuid-sandbox', '--no-first-run', '--disable-extensions'] });
+                        browser = await puppeteer.launch({ args: ['--no-sandbox', '--disable-setuid-sandbox', '--no-first-run', '--disable-extensions'] });
                     }
                     const page = await browser.newPage();
                     await page.setViewport({ width: 1600, height: 1066 });
