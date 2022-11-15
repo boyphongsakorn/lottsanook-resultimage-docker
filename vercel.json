@@ -11,5 +11,6 @@
           "dest": "index.js"
         }
     ],
-    "installCommand": "npm install"
+    "installCommand": "pnpm install --no-frozen-lockfile",
+    "buildCommand": "pnpm install --no-frozen-lockfile"
 }
