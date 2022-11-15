@@ -1,10 +1,10 @@
 import fs from 'fs'
 import fetch from 'node-fetch';
-//import puppeteer from 'puppeteer';
+import puppeteer from 'puppeteer';
 import Fastify from 'fastify'
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
-import puppeteercore from "puppeteer-core";
+//import puppeteercore from "puppeteer-core";
 import chrome from "chrome-aws-lambda";
 const fastify = Fastify({ logger: true })
 
@@ -258,7 +258,8 @@ fastify.get('/', async (request, reply) => {
             headercap = '<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><style>body{font-family: \'Mitr\', font-noto-thai;background: url(' + bgurl + '),url(\'' + request.query.bgimg + '\');color: black;padding-left: 0px;margin-left: 0px;background-position: center, center;background-repeat: no-repeat,no-repeat;background-size: cover,cover;}</style></head>'
         }
         if (request.query.hostname == 'lottsanook-resultimage-docker.vercel.app') {
-            const browser = await puppeteercore.launch({
+            //const browser = await puppeteercore.launch({
+            const browser = await puppeteer.launch({
                 args: chrome.args,
                 executablePath: await chrome.executablePath,
                 headless: chrome.headless,
@@ -418,7 +419,8 @@ fastify.get('/', async (request, reply) => {
 
                     //const browser = await puppeteer.launch({ args: ['--no-sandbox', '--disable-setuid-sandbox', '--no-first-run', '--disable-extensions'] });
                     if (request.query.hostname == 'lottsanook-resultimage-docker.vercel.app') {
-                        const browser = await puppeteercore.launch({
+                        //const browser = await puppeteercore.launch({
+                        const browser = await puppeteer.launch({
                             args: chrome.args,
                             executablePath: await chrome.executablePath,
                             headless: chrome.headless,
