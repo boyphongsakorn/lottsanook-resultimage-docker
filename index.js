@@ -7,11 +7,6 @@ import { dirname } from 'path';
 import puppeteercore from "puppeteer-core";
 import chrome from "chrome-aws-lambda";
 const fastify = Fastify({ logger: true })
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
