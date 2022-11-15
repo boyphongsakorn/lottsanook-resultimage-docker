@@ -3,6 +3,11 @@ import fetch from 'node-fetch';
 import puppeteer from 'puppeteer';
 import Fastify from 'fastify'
 const fastify = Fastify({ logger: true })
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 function padLeadingZeros(num, size) {
     var s = num + "";
@@ -694,12 +699,6 @@ fastify.get('/', async (request, reply) => {
 
                     /*reply.type('image/jpg');
                     return fs.createReadStream(__dirname + '/' + datecheck.substring(0, 2) + '-' + datecheck.substring(2, 4) + '-' + datecheck.substring(4, 8) + '_normal.jpg');*/
-
-                    import { fileURLToPath } from 'url';
-                    import { dirname } from 'path';
-
-                    const __filename = fileURLToPath(import.meta.url);
-                    const __dirname = dirname(__filename);
                     
                     reply.type('image/png');
                     return fs.createReadStream(__dirname + '/' + datecheck.substring(0, 2) + '-' + datecheck.substring(2, 4) + '-' + datecheck.substring(4, 8) + '_normal.png');
