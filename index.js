@@ -47,6 +47,20 @@ await fastify.register(import('@fastify/rate-limit'), {
     // `text` is not available here
 //})()
 
+/*let browser
+        if (request.query.hostname == 'lottsanook-resultimage-docker.vercel.app') {
+            //const browser = await puppeteercore.launch({
+            browser = await puppeteer.launch({
+                args: chrome.args,
+                executablePath: await chrome.executablePath,
+                headless: chrome.headless,
+            });
+        } else {
+            browser = await puppeteer.launch({ args: ['--no-sandbox', '--disable-setuid-sandbox', '--no-first-run', '--disable-extensions'] });
+        }*/
+const browser = await puppeteer.launch({ args: ['--no-sandbox', '--disable-setuid-sandbox', '--no-first-run','--disable-extensions'] });
+const page = await browser.newPage();
+
 fastify.get('/ctc', async (request, reply) => {
     //return ok text
     return 'OK';
@@ -255,7 +269,7 @@ fastify.get('/', async (request, reply) => {
         if (request.query.bgimg) {
             headercap = '<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><style>body{font-family: \'Mitr\', font-noto-thai;background: url(' + bgurl + '),url(\'' + request.query.bgimg + '\');color: black;padding-left: 0px;margin-left: 0px;background-position: center, center;background-repeat: no-repeat,no-repeat;background-size: cover,cover;}</style></head>'
         }
-        let browser
+        /*let browser
         if (request.query.hostname == 'lottsanook-resultimage-docker.vercel.app') {
             //const browser = await puppeteercore.launch({
             browser = await puppeteer.launch({
@@ -266,7 +280,7 @@ fastify.get('/', async (request, reply) => {
         } else {
             browser = await puppeteer.launch({ args: ['--no-sandbox', '--disable-setuid-sandbox', '--no-first-run', '--disable-extensions'] });
         }
-        const page = await browser.newPage();
+        const page = await browser.newPage();*/
         await page.setViewport({ width: 2048, height: 2048 });
         await page.goto('data:text/html,' + headercap + '<div style="background: rgb(255,230,0);background: linear-gradient(254deg, rgba(255,230,0,1) 0%, rgba(0,146,210,1) 100%);margin-top: 65px;width: 2048px;text-align: center;"><h1 style="font-size: 80px;margin-bottom: 0px;padding-bottom: 0px;">ผลรางวัลสลากกินแบ่งรัฐบาล</h1><h2 style="font-size: 50px;margin-top: 0px;padding-top: 0px;">เมื่อประจำวันที่ ' + parseInt(datecheck.substring(0, 2)) + ' ' + monthtext + ' ' + datecheck.substring(4, 8) + '</h2></div><h2 style="font-size: 80px;margin-left: 845px;margin-top: 100px;margin-bottom: 0px;">รางวัลที่ 1</h2><h2 style="font-size: 17vw;margin-top: -65px;text-align: center;margin-bottom: 0px;width: 100%;">' + test[0][1] + '</h2><h2 style="margin-left: 1095px;margin-top: -20px;font-size: 75px;margin-bottom: 15px;">เลขท้าย สองตัว</h2><h2 style="margin-left: 1050px;font-size: 450px;margin-top: -90px;margin-bottom: 0px;">' + test[3][1] + '</h2><h2 style="margin-top: -765px;margin-left: 125px;font-size: 60px;margin-bottom: 0px;">เลขหน้า สามตัว</h2><h2 style="font-size: 7vw;margin-left: 160px;margin-top: -15px;">' + test[1][1] + ' | ' + test[1][2] + '</h2><h2 style="margin-left: 125px;margin-top: -90px;font-size: 60px;margin-bottom: 0px;">เลขท้าย สามตัว</h2><h2 style="font-size: 7vw;margin-left: 160px;margin-top: -10px;">' + test[2][1] + ' | ' + test[2][2] + '</h2>');
         //await page.waitForTimeout(1000);
@@ -290,8 +304,8 @@ fastify.get('/', async (request, reply) => {
     
             console.log('Finished generating screenshots!');*/
 
-            const browser = await puppeteer.launch({ args: ['--no-sandbox', '--disable-setuid-sandbox', '--no-first-run', '--disable-extensions'] });
-            const page = await browser.newPage();
+            //const browser = await puppeteer.launch({ args: ['--no-sandbox', '--disable-setuid-sandbox', '--no-first-run', '--disable-extensions'] });
+            //const page = await browser.newPage();
             await page.setViewport({ width: 1600, height: 1066 });
             await page.goto('data:text/html,' + headercap + '<h1 style="margin-top: 135px;margin-left: 180px;font-size: 80px;margin-bottom: 0px;">ผลรางวัลสลากกินแบ่งรัฐบาล</h1><h2 style="font-size: 50px;margin-right: 590px;text-align: right;margin-top: -10px;margin-bottom: 0px;">เมื่อประจำวันที่ ' + parseInt(datecheck.substring(0, 2)) + ' ' + monthtext + ' ' + datecheck.substring(4, 8) + '</h2><h2 style="font-size: 80px;margin-left: 450px;margin-top: 25px;margin-bottom: 0px;">รางวัลที่ 1</h2><h2 style="font-size: 11.25vw;margin-left: 190px;margin-top: -65px;margin-right: 650px;text-align: center;margin-bottom: 0px;">' + test[0][1] + '</h2><h2 style="margin-left: 1095px;margin-top: -285px;font-size: 50px;margin-bottom: 15px;">เลขท้าย สองตัว</h2><h2 style="margin-left: 1120px;font-size: 150px;margin-top: -45px;margin-bottom: 0px;">' + test[3][1] + '</h2><h2 style="margin-top: -20px;margin-left: 325px;font-size: 60px;margin-bottom: 0px;">เลขหน้า สามตัว</h2><h2 style="font-size: 5.7vw;margin-left: 260px;margin-top: -15px;">' + test[1][1] + ' | ' + test[1][2] + '</h2><h2 style="margin-left: 875px;margin-top: -300px;font-size: 60px;margin-bottom: 0px;">เลขท้าย สามตัว</h2><h2 style="font-size: 5.7vw;margin-left: 805px;max-width: 475px;margin-top: -15px;">' + test[2][1] + ' | ' + test[2][2] + '</h2>')
             //await page.waitForTimeout(2000);
@@ -331,8 +345,8 @@ fastify.get('/', async (request, reply) => {
             fs.createReadStream(datecheck.substring(0, 2) + '-' + datecheck.substring(2, 4) + '-' + datecheck.substring(4, 8) + '_gold.png').pipe(res);
             console.log('Finished generating screenshots!');*/
 
-            const browser = await puppeteer.launch({ args: ['--no-sandbox', '--disable-setuid-sandbox', '--no-first-run', '--disable-extensions'] });
-            const page = await browser.newPage();
+            //const browser = await puppeteer.launch({ args: ['--no-sandbox', '--disable-setuid-sandbox', '--no-first-run', '--disable-extensions'] });
+            //const page = await browser.newPage();
             await page.setViewport({ width: 1600, height: 1066 });
             await page.goto('data:text/html,' + headercap + '<h1 style="margin-top: 3px;margin-left: 5px;font-size: 65px;">ผลรางวัลสลากกินแบ่งรัฐบาล</h1><h2 style="margin-top: -30px;margin-left: 0px;font-size: 50px;margin-right: 450px;text-align: right;">เมื่อประจำวันที่ ' + parseInt(datecheck.substring(0, 2)) + ' ' + monthtext + ' ' + datecheck.substring(4, 8) + '</h2><h2 style="margin-top: 47px;font-size: 30px;margin-left: 0px;">รางวัลที่ 1</h2><h2 style="font-size: 8vw;margin-left: 0px;margin-top: -80px;margin-right: 800px;text-align: center;">' + test[0][1] + '</h2><h2 style="margin-top: -115px;font-size: 30px;">เลขหน้า สามตัว</h2><h2 style="font-size: 100px;margin-left: 170px;margin-top: -60px;">' + test[1][1] + ' | ' + test[1][2] + '</h2><h2 style="margin-left: 0px;font-size: 30px;margin-top: -70px;">เลขท้าย สามตัว</h2><h2 style="font-size: 5.96vw;margin-left: 180px;max-width: 475px;margin-top: -55px;">' + test[2][1] + ' | ' + test[2][2] + '</h2><h2 style="margin-top: -65px;font-size: 30px;position: fixed;">เลขท้าย สองตัว</h2><h2 style="margin-left: 300px;font-size: 150px;margin-top: -87px;position: fixed;">' + test[3][1] + '</h2><h1 style="margin-top: -860px;margin-left: 1010px;font-size: 65px;position: fixed;">ราคาทองวันนี้</h1><h1 style="margin-top: -625px;margin-left: 820px;font-size: 65px;position: fixed;">ทองคำ</h1><h1 style="margin-top: -500px;margin-left: 850px;font-size: 65px;position: fixed;">' + golddata.response.price.gold.buy + ' | ' + golddata.response.price.gold.sell + '</h1><h1 style="margin-top: -350px;margin-left: 792px;font-size: 60px;position: fixed;background-color: gold;padding-top: 7px;padding-left: 5px;padding-right: 5px;">ทองคำแท่ง</h1><h1 style="margin-top: -190px;margin-left: 827px;font-size: 65px;position: fixed;">' + golddata.response.price.gold_bar.buy + ' | ' + golddata.response.price.gold_bar.sell + '</h1><h1 style="position: absolute;left: 535px;top: 382px;">' + test[4][1] + ' | ' + test[4][2] + '</h1>')
             //await page.waitForTimeout(1000);
@@ -417,7 +431,7 @@ fastify.get('/', async (request, reply) => {
                         .run();*/
 
                     //const browser = await puppeteer.launch({ args: ['--no-sandbox', '--disable-setuid-sandbox', '--no-first-run', '--disable-extensions'] });
-                    let browser
+                    /*let browser
                     if (request.query.hostname == 'lottsanook-resultimage-docker.vercel.app') {
                         //const browser = await puppeteercore.launch({
                         browser = await puppeteer.launch({
@@ -428,7 +442,7 @@ fastify.get('/', async (request, reply) => {
                     } else {
                         browser = await puppeteer.launch({ args: ['--no-sandbox', '--disable-setuid-sandbox', '--no-first-run', '--disable-extensions'] });
                     }
-                    const page = await browser.newPage();
+                    const page = await browser.newPage();*/
                     await page.setViewport({ width: 1600, height: 1066 });
                     await page.goto('data:text/html,' + headercap + '<h1 style="margin-top: 135px;margin-left: 180px;font-size: 80px;margin-bottom: 0px;">ผลรางวัลสลากกินแบ่งรัฐบาล</h1><h2 style="font-size: 50px;margin-right: 590px;text-align: right;margin-top: -10px;margin-bottom: 0px;">เมื่อประจำวันที่ ' + parseInt(datecheck.substring(0, 2)) + ' ' + monthtext + ' ' + datecheck.substring(4, 8) + '</h2><h2 style="font-size: 80px;margin-left: 450px;margin-top: 25px;margin-bottom: 0px;">รางวัลที่ 1</h2><h2 style="font-size: 11.25vw;margin-left: 190px;margin-top: -65px;margin-right: 650px;text-align: center;margin-bottom: 0px;">' + test[0][1] + '</h2><h2 style="margin-left: 1095px;margin-top: -285px;font-size: 50px;margin-bottom: 15px;">เลขท้าย สองตัว</h2><h2 style="margin-left: 1120px;font-size: 150px;margin-top: -45px;margin-bottom: 0px;">' + test[3][1] + '</h2><h2 style="margin-top: -20px;margin-left: 325px;font-size: 60px;margin-bottom: 0px;">เลขหน้า สามตัว</h2><h2 style="font-size: 5.7vw;margin-left: 260px;margin-top: -15px;">' + test[1][1] + ' | ' + test[1][2] + '</h2><h2 style="margin-left: 875px;margin-top: -300px;font-size: 60px;margin-bottom: 0px;">เลขท้าย สามตัว</h2><h2 style="font-size: 5.7vw;margin-left: 805px;max-width: 475px;margin-top: -15px;">' + test[2][1] + ' | ' + test[2][2] + '</h2>');
                     //await page.waitForTimeout(1000);
