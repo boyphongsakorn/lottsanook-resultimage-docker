@@ -103,17 +103,6 @@ fastify.get('/fbbggold', async (request, reply) => {
 })
 
 fastify.get('/', async (request, reply) => {
-    if (request.query.date && Object.keys(request.query).length == 1) {
-        const checkimage = await fetch('https://raw.githubusercontent.com/boyphongsakorn/testrepo/main/img_tmp/'+request.query.date);
-        const status = await checkimage.status;
-        if (status == 200) {
-            const buffer = await checkimage.buffer();
-            console.log('Image found');
-            reply.type('image/jpeg');
-            return buffer;
-        }
-    }
-
     let date = new Date().getDate();
     let month = new Date().getMonth() + 1;
     let year = new Date().getFullYear();
@@ -136,6 +125,17 @@ fastify.get('/', async (request, reply) => {
     } else {
         datecheck = date + month + byear;
     }
+    
+    //if (request.query.date && Object.keys(request.query).length == 1) {
+        const checkimage = await fetch('https://raw.githubusercontent.com/boyphongsakorn/testrepo/main/img_tmp/'+datecheck);
+        const status = await checkimage.status;
+        if (status == 200) {
+            const buffer = await checkimage.buffer();
+            console.log('Image found');
+            reply.type('image/jpeg');
+            return buffer;
+        }
+    //}
 
     try {
         //console.log(fs.statSync("out.log").size)
