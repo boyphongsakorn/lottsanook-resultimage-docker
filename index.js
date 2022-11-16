@@ -112,7 +112,7 @@ fastify.get('/', async (request, reply) => {
             reply.type('image/jpeg');
             return buffer;
         }
-    } else {
+    } else if (!request.query.date) {
         const checkimage = await fetch('https://raw.githubusercontent.com/boyphongsakorn/testrepo/main/img_tmp/'+new Date().getDate()+''+(new Date().getMonth() + 1)+''+(new Date().getFullYear() + 543));
         const status = await checkimage.status;
         if (status == 200) {
