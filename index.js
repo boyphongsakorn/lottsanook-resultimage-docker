@@ -183,17 +183,11 @@ fastify.get('/', async (request, reply) => {
             questurl = 'https://lotapi2.pwisetthon.com/.netlify/functions/server/'
         })*/
 
-    const lotapi = await fetch(questurl + '/?date=' + datecheck, { 'timeout': 5000 })
-    const lotapijson = await lotapi.json()
     const isday = await fetch(questurl + '/reto', { 'timeout': 5000 })
     const isdaytext = await isday.text()
 
     console.log(questurl)
 
-    console.log(lotapijson[0][1]);
-    test = lotapijson
-
-    console.log(datecheck)
     try {
         if (fs.existsSync(datecheck.substring(0, 2) + '-' + datecheck.substring(2, 4) + '-' + datecheck.substring(4, 8) + '_normal.png') && (datecheck == date + month + byear && isdaytext == 'yes')) {
             fs.unlinkSync(datecheck.substring(0, 2) + '-' + datecheck.substring(2, 4) + '-' + datecheck.substring(4, 8) + '_normal.png')
@@ -274,6 +268,13 @@ fastify.get('/', async (request, reply) => {
     //requestcount++
 
     if (request.query.tile == 'true') {
+        const lotapi = await fetch(questurl + '/?date=' + datecheck, { 'timeout': 5000 })
+        const lotapijson = await lotapi.json()
+        console.log(lotapijson[0][1]);
+        test = lotapijson
+
+        console.log(datecheck)
+
         let headercap = '<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><style>body{font-family: \'Mitr\', font-noto-thai;background: url(' + bgurl + '),linear-gradient(74deg, rgba(255,230,0,1) 0%, rgba(0,146,210,1) 100%);color: black;padding-left: 0px;margin-left: 0px;}</style></head>'
         if (request.query.bgimg) {
             headercap = '<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><style>body{font-family: \'Mitr\', font-noto-thai;background: url(' + bgurl + '),url(\'' + request.query.bgimg + '\');color: black;padding-left: 0px;margin-left: 0px;background-position: center, center;background-repeat: no-repeat,no-repeat;background-size: cover,cover;}</style></head>'
@@ -301,6 +302,12 @@ fastify.get('/', async (request, reply) => {
         reply.type('image/jpeg');
         return image;
     } else {
+        const lotapi = await fetch(questurl + '/?date=' + datecheck, { 'timeout': 5000 })
+        const lotapijson = await lotapi.json()
+        console.log(lotapijson[0][1]);
+        test = lotapijson
+
+        console.log(datecheck)
         if (request.query.bgimg) {
             //let headercap = '<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link href="https://fonts.googleapis.com/css2?family=Mitr&display=swap" rel="stylesheet"><style>body{font-weight: 700;font-family: \'Mitr\', font-noto-thai;background-image: url(\'http://localhost:' + goport + '/'+bgurl+'\'), url(\'' + url.parse(req.url, true).query.bgimg + '\');background-position: center, center;background-repeat: no-repeat,no-repeat;background-size: cover,cover;color: white;}</style></head>'
             let headercap = '<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><style>body{font-weight: 700;font-family: \'Mitr\', font-noto-thai;background-image: url(\'' + bgurl + '\'), url(\'' + request.query.bgimg + '\');background-position: center, center;background-repeat: no-repeat,no-repeat;background-size: cover,cover;color: white;}</style></head>'
