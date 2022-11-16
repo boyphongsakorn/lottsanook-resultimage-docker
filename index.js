@@ -297,7 +297,7 @@ fastify.get('/', async (request, reply) => {
 
         console.log('Finished generating screenshots!');
 
-        await browser.close();
+        //await browser.close();
         reply.type('image/jpeg');
         return image;
     } else {
@@ -320,7 +320,7 @@ fastify.get('/', async (request, reply) => {
             //await page.waitForTimeout(2000);
             const image = await page.screenshot();
 
-            await browser.close();
+            //await browser.close();
 
             //after 30 seconds, requestcount will be requestcount - 1
             /*setTimeout(function () {
@@ -369,7 +369,7 @@ fastify.get('/', async (request, reply) => {
             //reply.type('image/png');
             //return fs.createReadStream(__dirname + '/' + datecheck.substring(0, 2) + '-' + datecheck.substring(2, 4) + '-' + datecheck.substring(4, 8) + '_gold.png');
 
-            await browser.close();
+            //await browser.close();
 
             reply.type('image/png');
             return image;
@@ -471,7 +471,7 @@ fastify.get('/', async (request, reply) => {
                         requestcount = requestcount - 1;
                     }, 30000);*/
 
-                    await browser.close();
+                    //await browser.close();
 
                     //return image
 
