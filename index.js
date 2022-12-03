@@ -536,8 +536,8 @@ const start = async () => {
     try {
         await fastify.listen({ port: goport, host: '0.0.0.0' })
     } catch (err) {
-        fastify.log.error(err)
         console.log(err)
+        fastify.log.error(err)
         process.exit(1)
     }
 }
