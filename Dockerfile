@@ -29,7 +29,7 @@
 #COPY . .
 #CMD ["npm","run","dev"]
 
-FROM node:current-alpine3.11
+FROM node:lts-alpine
 #FROM node:16-alpine3.11
 #ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true \
 #    PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
@@ -89,7 +89,7 @@ FROM node:current-alpine3.11
 
 #RUN ln -s /usr/local/lib/libevent-2.1.so.6 /usr/lib/libevent-2.1.so.6
 #RUN mkdir /usr/lib64 && ln -s /usr/local/lib/libevent-2.1.so.6 /usr/lib64/libevent-2.1.so.6
-RUN apk add --no-cache font-noto-thai && apk add --no-cache libevent libevent-dev chromium --repository=http://dl-cdn.alpinelinux.org/alpine/v3.11/community
+RUN apk add --no-cache font-noto-thai libevent libevent-dev chromium
 #RUN apk add --no-cache font-noto-thai && apk add --no-cache libevent libevent-dev chromium
 
 # Google fonts
