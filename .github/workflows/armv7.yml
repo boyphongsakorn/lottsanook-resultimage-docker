@@ -31,7 +31,7 @@ jobs:
         run: |
           #${GITHUB_REPOSITORY#*/}
           DOCKER_IMAGE=${{ secrets.DOCKER_USERNAME }}/lottsanook-resultimage
-          VERSION=latest
+          VERSION=latest-armv7
           SHORTREF=${GITHUB_SHA::8}
           # If this is git tag, use the tag name as a docker tag
           # if [[ $GITHUB_REF == refs/tags/* ]]; then
