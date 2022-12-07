@@ -115,6 +115,7 @@ ADD . ./
 #RUN pnpm install -r --offline --prod
 
 RUN pnpm install
+RUN pnpm up --latest
 #RUN pnpm install -r --prod
 #RUN npm install
 # If you are building your code for production
