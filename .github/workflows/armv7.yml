@@ -1,5 +1,5 @@
 ---
-name: 'Build Images to Docker Hub'
+name: 'Build Images to Docker Hub for armv7 only'
 
 on:
   pull_request:
