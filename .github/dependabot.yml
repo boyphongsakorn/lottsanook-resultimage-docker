@@ -11,3 +11,7 @@ updates:
       interval: "daily"
     ignore:
       - dependency-name: "puppeteer"
+  - package-ecosystem: "github-actions" # See documentation for possible values
+    directory: "/" # Location of package manifests
+    schedule:
+      interval: "monthly"
