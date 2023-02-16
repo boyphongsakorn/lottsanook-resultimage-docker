@@ -89,6 +89,7 @@ FROM node:lts-alpine
 
 #RUN ln -s /usr/local/lib/libevent-2.1.so.6 /usr/lib/libevent-2.1.so.6
 #RUN mkdir /usr/lib64 && ln -s /usr/local/lib/libevent-2.1.so.6 /usr/lib64/libevent-2.1.so.6
+RUN apk add gconf libasound libatk libc6-compat cairo cups dbus expat fontconfig libgcc glib gtk+3.0 nspr pango pangocairo libstdc++ xorg-server libxcomposite libxcursor libxdamage libxext libxfixes libxi libxrandr libxrender libxss libxtst ca-certificates liberation-fonts libappindicator-gtk3 nss lsb-release xdg-utils wget
 RUN apk add --no-cache font-noto-thai libevent libevent-dev chromium
 #RUN apk add --no-cache font-noto-thai && apk add --no-cache libevent libevent-dev chromium
 
