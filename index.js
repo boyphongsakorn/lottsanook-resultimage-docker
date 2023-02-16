@@ -241,6 +241,10 @@ fastify.get('/', async (request, reply) => {
 
     let bgurl
 
+    if (!request.query.rmber) {
+        request.query.rmber = 'false'
+    }
+
     if (request.query.tile == 'true') {
         bgurl = 'https://raw.githubusercontent.com/quad-b/lottsanook-resultimage-docker/main/lot_seq.png'
     }else{
