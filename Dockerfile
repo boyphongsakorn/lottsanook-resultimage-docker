@@ -100,7 +100,7 @@ RUN set -x \
     ttf-freefont \
     libevent \
     libevent-dev \
-    chromium \
+    chromium 
     # && npm install puppeteer
 #RUN apk add --no-cache font-noto-thai libevent libevent-dev chromium
 #RUN apk add --no-cache font-noto-thai && apk add --no-cache libevent libevent-dev chromium
