@@ -16,13 +16,13 @@ function padLeadingZeros(num, size) {
 }
 
 let goport = process.env.PORT || 4000;
-let questurl = 'https://lotapi3.pwisetthon.com';
+let questurl = 'https://lottsanook-cfworker.boy1556.workers.dev';
 //let requestcount = 0;
 
-await fastify.register(import('@fastify/rate-limit'), {
-    max: 4,
-    timeWindow: 30000
-})
+// await fastify.register(import('@fastify/rate-limit'), {
+//     max: 4,
+//     timeWindow: 30000
+// })
 
 //(async () => {
     //try {
@@ -34,12 +34,12 @@ await fastify.register(import('@fastify/rate-limit'), {
                 questurl = 'http://192.168.31.210:5000'
             } else {
                 questurl = 'https://lottsanook-cfworker.boy1556.workers.dev'
-                //questurl = 'https://lotapi3.pwisetthon.com'
+                questurl = 'https://lotapi3.pwisetthon.com'
             }
         })
         .catch(err => {
-            //questurl = 'https://lottsanook-cfworker.boy1556.workers.dev'
-            questurl = 'https://lotapi3.pwisetthon.com'
+            questurl = 'https://lottsanook-cfworker.boy1556.workers.dev'
+//             questurl = 'https://lotapi3.pwisetthon.com'
         })
     //} catch (e) {
     // Deal with the fact the chain failed
