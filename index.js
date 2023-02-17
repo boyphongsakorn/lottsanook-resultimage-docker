@@ -4,6 +4,7 @@ import puppeteer from 'puppeteer';
 import Fastify from 'fastify'
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
+import { CronJob } from 'cron';
 const fastify = Fastify({ logger: true })
 
 const __filename = fileURLToPath(import.meta.url);
@@ -17,6 +18,7 @@ function padLeadingZeros(num, size) {
 
 let goport = process.env.PORT || 4000;
 let questurl = 'https://lottsanook-cfworker.boy1556.workers.dev';
+let isdaytext = 'no';
 //let requestcount = 0;
 
 // await fastify.register(import('@fastify/rate-limit'), {
@@ -60,6 +62,14 @@ let questurl = 'https://lottsanook-cfworker.boy1556.workers.dev';
         }*/
 const browser = await puppeteer.launch({ args: ['--no-sandbox', '--disable-setuid-sandbox', '--no-first-run','--disable-extensions'] });
 const page = await browser.newPage();
+
+cronjob = new CronJob('0 0 0 * * *', async function() {
+    const isday = await fetch(questurl + '/reto', { 'timeout': 5000 })
+    isdaytext = await isday.text();
+    console.log('isdaytext: ' + isdaytext);
+}, null, true, 'Asia/Bangkok');
+
+cronjob.start();
 
 fastify.get('/ctc', async (request, reply) => {
     //return ok text
@@ -183,8 +193,7 @@ fastify.get('/', async (request, reply) => {
             questurl = 'https://lotapi2.pwisetthon.com/.netlify/functions/server/'
         })*/
 
-    const isday = await fetch(questurl + '/reto', { 'timeout': 5000 })
-    const isdaytext = await isday.text()
+    isdaytext = await isday.text()
 
     console.log(questurl)
 
