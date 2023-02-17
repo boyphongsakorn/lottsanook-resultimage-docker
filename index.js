@@ -63,7 +63,7 @@ let isdaytext = 'no';
 const browser = await puppeteer.launch({ args: ['--no-sandbox', '--disable-setuid-sandbox', '--no-first-run','--disable-extensions'] });
 const page = await browser.newPage();
 
-cronjob = new CronJob('0 0 0 * * *', async function() {
+let cronjob = new CronJob('0 0 0 * * *', async function() {
     const isday = await fetch(questurl + '/reto', { 'timeout': 5000 })
     isdaytext = await isday.text();
     console.log('isdaytext: ' + isdaytext);
