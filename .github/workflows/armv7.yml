@@ -1,5 +1,5 @@
 ---
-name: 'Build Images to Docker Hub'
+name: 'Build Images to Docker Hub for armv7 only'
 
 on:
   pull_request:
@@ -22,18 +22,21 @@ jobs:
       #- run: eslint --no-eslintrc --rule 'quote-props:warn' --parser-options=ecmaVersion:13 --parser-options=sourceType:module --quiet --fix --ext .js index.js
       #- run: rm -rf node_modules
       #- run: rm pnpm-lock.yaml
+      
+      - run: rm Dockerfile
+      - run: mv Olddockerfile Dockerfile
 
       - name: Prepare
         id: prep
         run: |
           #${GITHUB_REPOSITORY#*/}
           DOCKER_IMAGE=${{ secrets.DOCKER_USERNAME }}/lottsanook-resultimage
-          VERSION=latest
+          VERSION=latest-armv7
           SHORTREF=${GITHUB_SHA::8}
           # If this is git tag, use the tag name as a docker tag
-          if [[ $GITHUB_REF == refs/tags/* ]]; then
-            VERSION=${GITHUB_REF#refs/tags/v}
-          fi
+          # if [[ $GITHUB_REF == refs/tags/* ]]; then
+          #   VERSION=${GITHUB_REF#refs/tags/v}
+          # fi
           TAGS="${DOCKER_IMAGE}:${VERSION},${DOCKER_IMAGE}:${SHORTREF}"
           #TAGS="${DOCKER_IMAGE}:${VERSION}"
           # If the VERSION looks like a version number, assume that
@@ -73,7 +76,7 @@ jobs:
           builder: ${{ steps.buildx.outputs.name }}
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/arm/v7
           push: true
           tags: ${{ steps.prep.outputs.tags }}
           
@@ -84,6 +87,6 @@ jobs:
           builder: ${{ steps.buildx.outputs.name }}
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/arm/v7
           push: false
           tags: ${{ steps.prep.outputs.tags }}

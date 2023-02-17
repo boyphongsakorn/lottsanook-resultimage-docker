@@ -29,7 +29,7 @@
 #COPY . .
 #CMD ["npm","run","dev"]
 
-FROM node:lts-alpine
+FROM node:current-alpine3.11
 #FROM node:16-alpine3.11
 #ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true \
 #    PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
@@ -89,34 +89,8 @@ FROM node:lts-alpine
 
 #RUN ln -s /usr/local/lib/libevent-2.1.so.6 /usr/lib/libevent-2.1.so.6
 #RUN mkdir /usr/lib64 && ln -s /usr/local/lib/libevent-2.1.so.6 /usr/lib64/libevent-2.1.so.6
-#RUN apk add gconf libasound libatk libc6-compat cairo cups dbus expat fontconfig libgcc glib gtk+3.0 nspr pango pangocairo libstdc++ xorg-server libxcomposite libxcursor libxdamage libxext libxfixes libxi libxrandr libxrender libxss libxtst ca-certificates liberation-fonts libappindicator-gtk3 nss lsb-release xdg-utils wget
-# ENV CHROME_BIN="/usr/bin/chromium-browser" \
-#     PUPPETEER_SKIP_CHROMIUM_DOWNLOAD="true"
-# RUN set -x \
-#     && apk update \
-#     && apk upgrade \
-#     && apk add --no-cache \
-#     udev \
-#     ttf-freefont \
-#     libevent \
-#     libevent-dev \
-#     chromium 
-    # && npm install puppeteer
-RUN apk add --no-cache font-noto-thai libevent libevent-dev chromium
-RUN apk add --no-cache font-noto-thai && apk add --no-cache libevent libevent-dev chromium
-
-RUN apk add --no-cache \
-      chromium \
-      nss \
-      freetype \
-      harfbuzz \
-      ca-certificates \
-      ttf-freefont 
-      # \
-#       nodejs \
-#       yarn
-      
-ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
+RUN apk add --no-cache font-noto-thai && apk add --no-cache libevent libevent-dev chromium --repository=http://dl-cdn.alpinelinux.org/alpine/v3.11/community
+#RUN apk add --no-cache font-noto-thai && apk add --no-cache libevent libevent-dev chromium
 
 # Google fonts
 #RUN wget https://github.com/google/fonts/archive/main.tar.gz -O gf.tar.gz
@@ -141,7 +115,7 @@ ADD . ./
 #RUN pnpm install -r --offline --prod
 
 RUN pnpm install
-# RUN pnpm up --latest
+RUN pnpm install puppeteer@14.4.1
 #RUN pnpm install -r --prod
 #RUN npm install
 # If you are building your code for production
