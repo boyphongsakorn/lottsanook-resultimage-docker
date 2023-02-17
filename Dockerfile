@@ -90,8 +90,8 @@ FROM node:lts-alpine
 #RUN ln -s /usr/local/lib/libevent-2.1.so.6 /usr/lib/libevent-2.1.so.6
 #RUN mkdir /usr/lib64 && ln -s /usr/local/lib/libevent-2.1.so.6 /usr/lib64/libevent-2.1.so.6
 #RUN apk add gconf libasound libatk libc6-compat cairo cups dbus expat fontconfig libgcc glib gtk+3.0 nspr pango pangocairo libstdc++ xorg-server libxcomposite libxcursor libxdamage libxext libxfixes libxi libxrandr libxrender libxss libxtst ca-certificates liberation-fonts libappindicator-gtk3 nss lsb-release xdg-utils wget
-ENV CHROME_BIN="/usr/bin/chromium-browser" \
-    PUPPETEER_SKIP_CHROMIUM_DOWNLOAD="true"
+# ENV CHROME_BIN="/usr/bin/chromium-browser" \
+#     PUPPETEER_SKIP_CHROMIUM_DOWNLOAD="true"
 # RUN set -x \
 #     && apk update \
 #     && apk upgrade \
