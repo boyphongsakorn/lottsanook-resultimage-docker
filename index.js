@@ -193,7 +193,7 @@ fastify.get('/', async (request, reply) => {
             questurl = 'https://lotapi2.pwisetthon.com/.netlify/functions/server/'
         })*/
 
-    isdaytext = await isday.text()
+    // isdaytext = await isday.text()
 
     console.log(questurl)
 
