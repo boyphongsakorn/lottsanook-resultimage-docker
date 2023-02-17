@@ -105,6 +105,19 @@ FROM node:lts-alpine
 RUN apk add --no-cache font-noto-thai libevent libevent-dev chromium
 RUN apk add --no-cache font-noto-thai && apk add --no-cache libevent libevent-dev chromium
 
+RUN apk add --no-cache \
+      chromium \
+      nss \
+      freetype \
+      harfbuzz \
+      ca-certificates \
+      ttf-freefont 
+      # \
+#       nodejs \
+#       yarn
+      
+ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
+
 # Google fonts
 #RUN wget https://github.com/google/fonts/archive/main.tar.gz -O gf.tar.gz
 #RUN tar -xf gf.tar.gz
