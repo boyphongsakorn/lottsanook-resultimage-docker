@@ -254,7 +254,11 @@ fastify.get('/', async (request, reply) => {
     }
 
     if (request.query.tile == 'true') {
-        bgurl = 'https://raw.githubusercontent.com/quad-b/lottsanook-resultimage-docker/main/lot_seq.png'
+        if ((request.query.rmber.toLowerCase() == 'true' || request.query.rmber) && request.query.rmber.toLowerCase() != 'false') {
+            bgurl = 'https://raw.githubusercontent.com/quad-b/lottsanook-resultimage-docker/main/lot_seq_rmbn.png'
+        } else {
+            bgurl = 'https://raw.githubusercontent.com/quad-b/lottsanook-resultimage-docker/main/lot_seq.png'
+        }
     }else{
         if (request.query.bgimg && (request.query.rmber.toLowerCase() == 'true' || request.query.rmber) && request.query.rmber.toLowerCase() != 'false') {
             bgurl = 'https://raw.githubusercontent.com/quad-b/lottsanook-resultimage-docker/main/fbrmbgabn.png'
