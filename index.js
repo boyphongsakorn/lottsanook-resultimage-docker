@@ -289,7 +289,15 @@ fastify.get('/', async (request, reply) => {
 
         let headercap = '<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><style>body{font-family: \'Mitr\', font-noto-thai;background: url(' + bgurl + '),linear-gradient(74deg, rgba(255,230,0,1) 0%, rgba(0,146,210,1) 100%);color: black;padding-left: 0px;margin-left: 0px;}</style></head>'
         if (request.query.bgimg) {
-            headercap = '<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><style>body{font-family: \'Mitr\', font-noto-thai;background: url(' + bgurl + '),url(\'' + request.query.bgimg + '\');color: black;padding-left: 0px;margin-left: 0px;background-position: center, center;background-repeat: no-repeat,no-repeat;background-size: cover,cover;}</style></head>'
+            //get image from url
+            const bgimg = await fetch(request.query.bgimg, { 'timeout': 5000 })
+            //convert to base64
+            const bgimgbase64 = await bgimg.buffer()
+            //convert to base64 string
+            const bgimgbase64str = bgimgbase64.toString('base64')
+            //add to header
+            headercap = '<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><style>body{font-family: \'Mitr\', font-noto-thai;background: url(' + bgurl + '),url(data:image/png;base64,' + bgimgbase64str + ');color: black;padding-left: 0px;margin-left: 0px;background-position: center, center;background-repeat: no-repeat,no-repeat;background-size: cover,cover;}</style></head>'
+            // headercap = '<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><style>body{font-family: \'Mitr\', font-noto-thai;background: url(' + bgurl + '),url(\'' + request.query.bgimg + '\');color: black;padding-left: 0px;margin-left: 0px;background-position: center, center;background-repeat: no-repeat,no-repeat;background-size: cover,cover;}</style></head>'
         }
         /*let browser
         if (request.query.hostname == 'lottsanook-resultimage-docker.vercel.app') {
@@ -321,6 +329,14 @@ fastify.get('/', async (request, reply) => {
 
         console.log(datecheck)
         if (request.query.bgimg) {
+            //get image from url
+            const bgimg = await fetch(request.query.bgimg, { 'timeout': 5000 })
+            //convert to base64
+            const bgimgbase64 = await bgimg.buffer()
+            //convert to base64 string
+            const bgimgbase64str = bgimgbase64.toString('base64')
+            //add base64 string to url
+            request.query.bgimg = 'data:image/jpeg;base64,' + bgimgbase64str
             //let headercap = '<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link href="https://fonts.googleapis.com/css2?family=Mitr&display=swap" rel="stylesheet"><style>body{font-weight: 700;font-family: \'Mitr\', font-noto-thai;background-image: url(\'http://localhost:' + goport + '/'+bgurl+'\'), url(\'' + url.parse(req.url, true).query.bgimg + '\');background-position: center, center;background-repeat: no-repeat,no-repeat;background-size: cover,cover;color: white;}</style></head>'
             let headercap = '<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><style>body{font-weight: 700;font-family: \'Mitr\', font-noto-thai;background-image: url(\'' + bgurl + '\'), url(\'' + request.query.bgimg + '\');background-position: center, center;background-repeat: no-repeat,no-repeat;background-size: cover,cover;color: white;}</style></head>'
 
