@@ -23,7 +23,7 @@ jobs:
       #- run: rm -rf node_modules
 
       - run: rm pnpm-lock.yaml
-        if: github.event_name == 'pull_request'
+        # if: github.event_name == 'pull_request'
 
       - name: Prepare
         id: prep
