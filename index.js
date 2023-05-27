@@ -379,7 +379,7 @@ fastify.get('/', async (request, reply) => {
         } else if (request.query.mode == "gold") {
             let golddata
 
-            const data = await fetch('https://thai-gold-api.herokuapp.com/latest');
+            const data = await fetch('https://api.chnwt.dev/thai-gold-api/latest');
             golddata = await data.json();
 
             let headercap = '<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><style>body{font-family: \'Mitr\', font-noto-thai;background-image: url(\'https://raw.githubusercontent.com/Quad-B/lottsanook-resultimage-docker/main/fbbg_gold.png\');color: white;}</style></head>'
