@@ -123,7 +123,7 @@ fastify.get('/', async (request, reply) => {
             return buffer;
         }
     } else if (!request.query.date && Object.keys(request.query).length == 0) {
-        const checkimage = await fetch('https://raw.githubusercontent.com/boyphongsakorn/testrepo/main/img_tmp/'+new Date().getDate()+''+(new Date().getMonth() + 1)+''+(new Date().getFullYear() + 543));
+        const checkimage = await fetch('https://raw.githubusercontent.com/boyphongsakorn/testrepo/main/img_tmp/'+('0' + new Date().getDate()).slice(-2).p+''+('0' + (new Date().getMonth() + 1)).slice(-2)+''+(new Date().getFullYear() + 543));
         const status = await checkimage.status;
         if (status == 200) {
             const buffer = await checkimage.buffer();
