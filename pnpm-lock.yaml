@@ -2,8 +2,8 @@ lockfileVersion: '6.0'
 
 dependencies:
   '@fastify/rate-limit':
-    specifier: 8.0.0
-    version: 8.0.0
+    specifier: 8.0.1
+    version: 8.0.1
   '@types/cron':
     specifier: ^2.0.0
     version: 2.0.0
@@ -65,12 +65,12 @@ packages:
       fast-json-stringify: 5.7.0
     dev: false
 
-  /@fastify/rate-limit@8.0.0:
-    resolution: {integrity: sha512-73pQFgpx6RMmY5nriYQW0AIATZpa/OAvWa5PQ9JHEqgjKMLNv9zLAphWIRh5914aN6sqtv8sLICr3Tp1NbXQIQ==}
+  /@fastify/rate-limit@8.0.1:
+    resolution: {integrity: sha512-sKztox9tAhKYJadS7yD7mBamNs8sLP/OlBjX6prGzlL3+q4cxPE2UafW8QF5s4+BuUyssQ7FabSlgieqyk4JZg==}
     dependencies:
       fastify-plugin: 4.5.0
       ms: 2.1.3
-      tiny-lru: 10.0.1
+      tiny-lru: 11.0.1
     dev: false
 
   /@types/cron@2.0.0:
@@ -878,11 +878,6 @@ packages:
 
   /through@2.3.8:
     resolution: {integrity: sha512-w89qg7PI8wAdvX60bMDP+bFoD5Dvhm9oLheFp5O4a2QF0cSBGsBX4qZmadPMvVqlLJBBci+WqGGOAPvcDeNSVg==}
-    dev: false
-
-  /tiny-lru@10.0.1:
-    resolution: {integrity: sha512-Vst+6kEsWvb17Zpz14sRJV/f8bUWKhqm6Dc+v08iShmIJ/WxqWytHzCTd6m88pS33rE2zpX34TRmOpAJPloNCA==}
-    engines: {node: '>=6'}
     dev: false
 
   /tiny-lru@11.0.1:
