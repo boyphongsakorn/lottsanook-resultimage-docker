@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@fastify/rate-limit':
-    specifier: 8.0.2
-    version: 8.0.2
+    specifier: 8.0.3
+    version: 8.0.3
   '@types/cron':
     specifier: ^2.0.1
     version: 2.0.1
@@ -69,8 +69,8 @@ packages:
       fast-json-stringify: 5.7.0
     dev: false
 
-  /@fastify/rate-limit@8.0.2:
-    resolution: {integrity: sha512-qJ556TLhihlRsU4DQmGWmG4otP7mLTfdknpv8cQAmlzVw/CCIpSEcaFi3ABsr2Bc+NJdO0fPcTiale0299AZbw==}
+  /@fastify/rate-limit@8.0.3:
+    resolution: {integrity: sha512-7wbSKXGKKLI1VkpW2XvS7SFg4n4/uzYt0YA5O2pfCcM6PYaBSV3VhSKGJ9/hJceCSH+zNEDRrWpufqxbcDkTZg==}
     dependencies:
       fastify-plugin: 4.5.0
       ms: 2.1.3
