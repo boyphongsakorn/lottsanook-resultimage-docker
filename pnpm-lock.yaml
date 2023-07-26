@@ -12,8 +12,8 @@ dependencies:
     specifier: ^2.0.1
     version: 2.0.1
   cron:
-    specifier: ^2.3.1
-    version: 2.3.1
+    specifier: ^2.4.0
+    version: 2.4.0
   fastify:
     specifier: 4.20.0
     version: 4.20.0
@@ -259,8 +259,8 @@ packages:
       yaml: 1.10.2
     dev: false
 
-  /cron@2.3.1:
-    resolution: {integrity: sha512-1eRRlIT0UfIqauwbG9pkg3J6CX9A6My2ytJWqAXoK0T9oJnUZTzGBNPxao0zjodIbPgf8UQWjE62BMb9eVllSQ==}
+  /cron@2.4.0:
+    resolution: {integrity: sha512-Cx77ic1TyIAtUggr0oAhtS8MLzPBUqGNIvdDM7jE3oFIxfe8LXWI9q3iQN/H2CebAiMir53LQKWOhEKnzkJTAQ==}
     dependencies:
       luxon: 3.2.1
     dev: false
