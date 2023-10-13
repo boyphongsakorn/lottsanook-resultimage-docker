@@ -12,8 +12,8 @@ dependencies:
     specifier: ^2.4.0
     version: 2.4.0
   cron:
-    specifier: ^3.1.0
-    version: 3.1.0
+    specifier: ^3.1.1
+    version: 3.1.1
   fastify:
     specifier: 4.24.1
     version: 4.24.1
@@ -81,7 +81,7 @@ packages:
     resolution: {integrity: sha512-5bBaAkqvSFBX8JMi/xCofNzG5E594TNsApMz68dLd/sQYz/HGQqgcxGHTRjOvD4G3Y+YF1Oo3S7QdCvKt1KAJQ==}
     deprecated: This is a stub types definition. cron provides its own type definitions, so you do not need this installed.
     dependencies:
-      cron: 3.1.0
+      cron: 3.1.1
     dev: false
 
   /@types/luxon@3.3.1:
@@ -261,8 +261,8 @@ packages:
       yaml: 1.10.2
     dev: false
 
-  /cron@3.1.0:
-    resolution: {integrity: sha512-u6Z89TV7zhG7aW7MX7aLQhK5PYjTzFpzjFgiSX5r7qC1vjPvRt1FVfarHRaN/5IokEXM1DRJcXnwXI0e9G0awA==}
+  /cron@3.1.1:
+    resolution: {integrity: sha512-P8rDShXt2IZa16KwuYpbd1w7NjU4BnXeUEfkesBXT36JXhUsQ1P6i6ctsi5H82FQmR4tn/MOz05aB/3vn6dSkA==}
     dependencies:
       '@types/luxon': 3.3.1
       luxon: 3.3.0
