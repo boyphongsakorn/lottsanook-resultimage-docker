@@ -326,9 +326,14 @@ fastify.get('/', async (request, reply) => {
         reply.type('image/jpeg');
         return image;
     } else {
-        const lotapi = await fetch(questurl + '/?date=' + datecheck, { 'timeout': 5000 })
-        const lotapijson = await lotapi.json()
+        let lotapi = await fetch(questurl + '/?date=' + datecheck, { 'timeout': 5000 })
+        let lotapijson = await lotapi.json()
         console.log(lotapijson[0][1]);
+        if(lotapijson[0][1] == 'XXXXXXX'){
+            lotapi = await fetch(questurl + '/index3?date=' + datecheck, { 'timeout': 5000 })
+            lotapijson = await lotapi.json()
+            console.log(lotapijson[0][1]);
+        }
         test = lotapijson
 
         console.log(datecheck)
