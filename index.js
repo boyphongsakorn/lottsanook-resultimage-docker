@@ -560,6 +560,34 @@ fastify.get('/', async (request, reply) => {
     }
 })
 
+fastify.get('/genlotimage', async (request, reply) => {
+    let monthtext = '';
+    let monthengtext = '';
+
+    switch (request.query.date.substring(2, 4)) {
+        case '01': monthtext = "มกราคม"; monthengtext = "January"; break;
+        case '02': monthtext = "กุมภาพันธ์"; monthengtext = "February"; break;
+        case '03': monthtext = "มีนาคม"; monthengtext = "March"; break;
+        case '04': monthtext = "เมษายน"; monthengtext = "April"; break;
+        case '05': monthtext = "พฤษภาคม"; monthengtext = "May"; break;
+        case '06': monthtext = "มิถุนายน"; monthengtext = "June"; break;
+        case '07': monthtext = "กรกฎาคม"; monthengtext = "July"; break;
+        case '08': monthtext = "สิงหาคม"; monthengtext = "August"; break;
+        case '09': monthtext = "กันยายน"; monthengtext = "September"; break;
+        case '10': monthtext = "ตุลาคม"; monthengtext = "October"; break;
+        case '11': monthtext = "พฤศจิกายน"; monthengtext = "November"; break;
+        case '12': monthtext = "ธันวาคม"; monthengtext = "December"; break;
+    }
+
+    await page.setViewport({ width: 1800, height: 1200 });
+    //html as https://imgul.teamquadb.in.th/images/2023/09/23/lotto_card.png background and add text
+    await page.goto('data:text/html,<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet"><style>body{background-image: url(\'https://imgul.teamquadb.in.th/images/2023/09/23/lotto_card.png\');background-size: cover;color: white;font-family: "Number By Hand", "Itim";}</style></head><h1 style="margin-left: 950px;margin-top: 160px;font-size: 200px;letter-spacing: 35px;color: black;">'+ request.query.number +'</h1><h1 style="margin-left: 950px;margin-top: -150px;font-size: 100px;color: black;width: 740px;text-align: center;">'+ parseInt(request.query.date.substring(0, 2)) + ' ' + monthtext + ' ' + request.query.date.substring(4, 8) +'</h1><h1 style="margin-left: 950px;margin-top: -80px;font-size: 100px;color: black;width: 740px;text-align: center;">'+ parseInt(request.query.date.substring(0, 2)) + ' ' + monthengtext + ' ' + (parseInt(request.query.date.substring(4, 8))-543) +'</h1>');
+    await page.waitForTimeout(1000);
+    const image = await page.screenshot();
+    reply.type('image/png');
+    return image;
+})
+
 /*const start = async () => {
     try {
         await fastify.listen(goport, '0.0.0.0')
