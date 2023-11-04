@@ -19,11 +19,11 @@
   },
   "homepage": "https://github.com/boyphongsakorn/lottsanook-resultimage-nodejs#readme",
   "dependencies": {
-    "@fastify/rate-limit": "8.0.0",
-    "@types/cron": "^2.0.0",
-    "cron": "^2.2.0",
-    "fastify": "4.17.0",
-    "node-fetch": "^3.3.0",
+    "@fastify/rate-limit": "8.0.3",
+    "@types/cron": "^2.4.0",
+    "cron": "^3.1.6",
+    "fastify": "4.24.3",
+    "node-fetch": "^3.3.2",
     "puppeteer": "19.3.0"
   },
   "type": "module"
