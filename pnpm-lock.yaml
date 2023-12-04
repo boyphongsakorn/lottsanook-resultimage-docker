@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@fastify/rate-limit':
-    specifier: 9.0.0
-    version: 9.0.0
+    specifier: 9.0.1
+    version: 9.0.1
   '@types/cron':
     specifier: ^2.4.0
     version: 2.4.0
@@ -69,12 +69,12 @@ packages:
       fast-json-stringify: 5.8.0
     dev: false
 
-  /@fastify/rate-limit@9.0.0:
-    resolution: {integrity: sha512-Gt5NXYyidUY47yO0QFvwwVwolbpFcq8Y6wSL0iV8v29IdUQVKhE9hcJE5N48LdnhTQDBdLiZDiR7nV4niMfOWw==}
+  /@fastify/rate-limit@9.0.1:
+    resolution: {integrity: sha512-BNKWtMHyJV+f3TUAQxWacq8dVfJLeTzBOthKpTpkYEBdBRY0cYn2UTPGpHglwZ84o0V+U7pS3wfO4mzF8eXFzg==}
     dependencies:
       '@lukeed/ms': 2.0.1
       fastify-plugin: 4.5.0
-      toad-cache: 3.3.0
+      toad-cache: 3.3.1
     dev: false
 
   /@lukeed/ms@2.0.1:
@@ -890,6 +890,11 @@ packages:
 
   /toad-cache@3.3.0:
     resolution: {integrity: sha512-3oDzcogWGHZdkwrHyvJVpPjA7oNzY6ENOV3PsWJY9XYPZ6INo94Yd47s5may1U+nleBPwDhrRiTPMIvKaa3MQg==}
+    engines: {node: '>=12'}
+    dev: false
+
+  /toad-cache@3.3.1:
+    resolution: {integrity: sha512-oE5vIpiyKEuyYJiyp0gYhiD1o7BmiPCJZX9pboK9X6EfdYYmNsk8m7J1kBwMt6H/avuDsCdEhassrMMxwW7h3Q==}
     engines: {node: '>=12'}
     dev: false
 
