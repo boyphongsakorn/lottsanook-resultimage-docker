@@ -386,6 +386,21 @@ fastify.get('/', async (request, reply) => {
 
             const data = await fetch('https://api.chnwt.dev/thai-gold-api/latest');
             if (data.status != 200) {
+                //json golddata > response > price > gold_bar
+                golddata = {
+                    response: {
+                        price: {
+                            gold: {
+                                buy: '0',
+                                sell: '0'
+                            },
+                            gold_bar: {
+                                buy: '0',
+                                sell: '0'
+                            }
+                        }
+                    }
+                }
                 const data2 = await fetch('https://thaigold.info/RealTimeDataV2/GoldPriceToday.xml');
                 
                 //split xml by <buyprice>
