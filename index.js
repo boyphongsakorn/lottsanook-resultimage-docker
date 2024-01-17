@@ -385,7 +385,24 @@ fastify.get('/', async (request, reply) => {
             let golddata
 
             const data = await fetch('https://api.chnwt.dev/thai-gold-api/latest');
-            golddata = await data.json();
+            if (data.status != 200) {
+                const data2 = await fetch('https://thaigold.info/RealTimeDataV2/GoldPriceToday.xml');
+                
+                //split xml by <buyprice>
+                const data2text = await data2.text();
+                const data2textsplit = data2text.split('<buyprice>');
+                //split xml by </buyprice>
+                const data2textsplit2 = data2textsplit[1].split('</buyprice>');
+                golddata.response.price.gold_bar.buy = data2textsplit2[0];
+
+                //split xml by <saleprice>
+                const data2textsplit3 = data2text.split('<saleprice>');
+                //split xml by </saleprice>
+                const data2textsplit4 = data2textsplit3[1].split('</saleprice>');
+                golddata.response.price.gold_bar.sell = data2textsplit4[0];
+            } else {
+                golddata = await data.json();
+            }
 
             let headercap = '<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><style>body{font-family: \'Mitr\', font-noto-thai;background-image: url(\'https://raw.githubusercontent.com/Quad-B/lottsanook-resultimage-docker/main/fbbg_gold.png\');color: white;}</style></head>'
 
