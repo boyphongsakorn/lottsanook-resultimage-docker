@@ -113,6 +113,12 @@ fastify.get('/fbbggold', async (request, reply) => {
 })
 
 fastify.get('/', async (request, reply) => {
+    try{
+        await page.setViewport({ width: 1600, height: 1066 });
+    } catch(e) {
+        console.log(err)
+        process.exit(1)
+    }
     if (request.query.date && Object.keys(request.query).length == 1) {
         const checkimage = await fetch('https://raw.githubusercontent.com/boyphongsakorn/testrepo/main/img_tmp/'+request.query.date);
         const status = await checkimage.status;
