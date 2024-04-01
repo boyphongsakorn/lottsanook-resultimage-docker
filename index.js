@@ -116,7 +116,7 @@ fastify.get('/', async (request, reply) => {
     try{
         await page.setViewport({ width: 1600, height: 1066 });
     } catch(e) {
-        console.log(err)
+        console.log(e)
         process.exit(1)
     }
     if (request.query.date && Object.keys(request.query).length == 1) {
