@@ -36,12 +36,12 @@ let isdaytext = 'no';
                 questurl = 'http://192.168.31.210:5000'
             } else {
                 questurl = 'https://lottsanook-cfworker.boy1556.workers.dev'
-                questurl = 'https://lotapi3.pwisetthon.com'
+                // questurl = 'https://lotapi3.pwisetthon.com'
             }
         })
         .catch(err => {
-            questurl = 'https://lottsanook-cfworker.boy1556.workers.dev'
-//             questurl = 'https://lotapi3.pwisetthon.com'
+            // questurl = 'https://lottsanook-cfworker.boy1556.workers.dev'
+            questurl = 'https://lotapi3.pwisetthon.com'
         })
     //} catch (e) {
     // Deal with the fact the chain failed
@@ -113,6 +113,12 @@ fastify.get('/fbbggold', async (request, reply) => {
 })
 
 fastify.get('/', async (request, reply) => {
+    try{
+        await page.setViewport({ width: 1600, height: 1066 });
+    } catch(e) {
+        console.log(e)
+        process.exit(1)
+    }
     if (request.query.date && Object.keys(request.query).length == 1) {
         const checkimage = await fetch('https://raw.githubusercontent.com/boyphongsakorn/testrepo/main/img_tmp/'+request.query.date);
         const status = await checkimage.status;
@@ -385,7 +391,39 @@ fastify.get('/', async (request, reply) => {
             let golddata
 
             const data = await fetch('https://api.chnwt.dev/thai-gold-api/latest');
-            golddata = await data.json();
+            if (data.status != 200) {
+                //json golddata > response > price > gold_bar
+                golddata = {
+                    response: {
+                        price: {
+                            gold: {
+                                buy: '0',
+                                sell: '0'
+                            },
+                            gold_bar: {
+                                buy: '0',
+                                sell: '0'
+                            }
+                        }
+                    }
+                }
+                const data2 = await fetch('https://thaigold.info/RealTimeDataV2/GoldPriceToday.xml');
+                
+                //split xml by <buyprice>
+                const data2text = await data2.text();
+                const data2textsplit = data2text.split('<buyprice>');
+                //split xml by </buyprice>
+                const data2textsplit2 = data2textsplit[1].split('</buyprice>');
+                golddata.response.price.gold_bar.buy = data2textsplit2[0];
+
+                //split xml by <saleprice>
+                const data2textsplit3 = data2text.split('<saleprice>');
+                //split xml by </saleprice>
+                const data2textsplit4 = data2textsplit3[1].split('</saleprice>');
+                golddata.response.price.gold_bar.sell = data2textsplit4[0];
+            } else {
+                golddata = await data.json();
+            }
 
             let headercap = '<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><style>body{font-family: \'Mitr\', font-noto-thai;background-image: url(\'https://raw.githubusercontent.com/Quad-B/lottsanook-resultimage-docker/main/fbbg_gold.png\');color: white;}</style></head>'
 
