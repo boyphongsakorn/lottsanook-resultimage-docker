@@ -28,20 +28,25 @@ let isdaytext = 'no';
 
 //(async () => {
     //try {
-    await fetch('http://192.168.31.210:5000', { 'timeout': 2000 })
+    console.log('Checking local API server...')
+    await fetch('http://192.168.31.210:5000', {
+        signal: AbortSignal.timeout(2000),
+    })
         .then(res => res.status)
         .then(status => {
             //if status is 2xx, then we can start the server
             if (status >= 200 && status < 300) {
                 questurl = 'http://192.168.31.210:5000'
             } else {
-                questurl = 'https://lottsanook-cfworker.boy1556.workers.dev'
-                // questurl = 'https://lotapi3.pwisetthon.com'
+                // questurl = 'https://lottsanook-cfworker.boy1556.workers.dev'
+                questurl = 'https://lotapi3.pwisetthon.com'
             }
+            console.log('Using API server: ' + questurl);
         })
         .catch(err => {
-            // questurl = 'https://lottsanook-cfworker.boy1556.workers.dev'
-            questurl = 'https://lotapi3.pwisetthon.com'
+            questurl = 'https://lottsanook-cfworker.boy1556.workers.dev'
+            // questurl = 'https://lotapi3.pwisetthon.com'
+            console.log('Using API server: ' + questurl);
         })
     //} catch (e) {
     // Deal with the fact the chain failed
@@ -64,7 +69,7 @@ const browser = await puppeteer.launch({ args: ['--no-sandbox', '--disable-setui
 const page = await browser.newPage();
 
 let cronjob = new CronJob('0 0 0 * * *', async function() {
-    const isday = await fetch(questurl + '/reto', { 'timeout': 5000 })
+    const isday = await fetch(questurl + '/reto', { signal: AbortSignal.timeout(5000), })
     isdaytext = await isday.text();
     console.log('isdaytext: ' + isdaytext);
 }, null, true, 'Asia/Bangkok');
@@ -154,7 +159,7 @@ fastify.get('/', async (request, reply) => {
     if (request.query.date != undefined && request.query.date != null) {
         datecheck = request.query.date;
     } else if (request.query.latest == 'true') {
-        const latest = await fetch(questurl + '/lastlot?info=true', { 'timeout': 5000 })
+        const latest = await fetch(questurl + '/lastlot?info=true', { signal: AbortSignal.timeout(5000), })
         const latestjson = await latest.json()
         datecheck = latestjson.info.date;
     } else {
@@ -290,7 +295,7 @@ fastify.get('/', async (request, reply) => {
     //requestcount++
 
     if (request.query.tile == 'true') {
-        const lotapi = await fetch(questurl + '/?date=' + datecheck, { 'timeout': 5000 })
+        const lotapi = await fetch(questurl + '/?date=' + datecheck, { signal: AbortSignal.timeout(5000), })
         const lotapijson = await lotapi.json()
         console.log(lotapijson[0][1]);
         test = lotapijson
@@ -300,7 +305,7 @@ fastify.get('/', async (request, reply) => {
         let headercap = '<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><style>body{font-family: \'Mitr\', font-noto-thai;background: url(' + bgurl + '),linear-gradient(74deg, rgba(255,230,0,1) 0%, rgba(0,146,210,1) 100%);color: black;padding-left: 0px;margin-left: 0px;}</style></head>'
         if (request.query.bgimg) {
             //get image from url
-            const bgimg = await fetch(request.query.bgimg, { 'timeout': 5000 })
+            const bgimg = await fetch(request.query.bgimg, { signal: AbortSignal.timeout(5000), })
             //convert to base64
             const bgimgbase64 = await bgimg.buffer()
             //convert to base64 string
@@ -332,11 +337,11 @@ fastify.get('/', async (request, reply) => {
         reply.type('image/jpeg');
         return image;
     } else {
-        let lotapi = await fetch(questurl + '/?date=' + datecheck, { 'timeout': 5000 })
+        let lotapi = await fetch(questurl + '/?date=' + datecheck, { signal: AbortSignal.timeout(5000), })
         let lotapijson = await lotapi.json()
         console.log(lotapijson[0][1]);
         if(lotapijson[0][1] == 'XXXXXXX'){
-            lotapi = await fetch(questurl + '/index3?date=' + datecheck, { 'timeout': 5000 })
+            lotapi = await fetch(questurl + '/index3?date=' + datecheck, { signal: AbortSignal.timeout(5000), })
             lotapijson = await lotapi.json()
             console.log(lotapijson[0][1]);
         }
@@ -345,7 +350,7 @@ fastify.get('/', async (request, reply) => {
         console.log(datecheck)
         if (request.query.bgimg) {
             //get image from url
-            const bgimg = await fetch(request.query.bgimg, { 'timeout': 5000 })
+            const bgimg = await fetch(request.query.bgimg, { signal: AbortSignal.timeout(5000), })
             //convert to base64
             const bgimgbase64 = await bgimg.buffer()
             //convert to base64 string
